@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="641.88" height="266.23" viewBox="-54.7 -17.34 641.88 266.23">
+  <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="-387.7" y1="422.88" x2="-387.7" y2="243.83" gradientTransform="matrix(1 0 0 -1 654 409.23)">
+    <stop offset=".01" stop-color="#cbecfc"/>
+    <stop offset=".4" stop-color="#bbe3f7"/>
+    <stop offset=".54" stop-color="#2793c8"/>
+    <stop offset="1" stop-color="#1e8ec5"/>
+  </linearGradient>
+  <path fill="url(#a)" d="M583.63-13.66h-96.27L398.4 77.4v-91.05L341.53 44.4v-58.05L236.43 91.72V-13.66L138.2 84.72v-98.38L78.13 44.72v-58.38L-51.04 113.4H-3.7l58.16-60.17v60.17l51.92-51.92v51.92l-48.7 48.7h49.28l97.2-97.18v48.48h52.8l58.84-58.83v58.83l50.58-50.58v50.58h122.25l32-32h-91.67l20.5-19.5h30.84l30.41-30.42h-28.08l20.7-18.7h54.63z"/>
+  <linearGradient id="b" gradientUnits="userSpaceOnUse" x1="266.24" y1="-17.72" x2="266.24" y2="163.61">
+    <stop offset="0" stop-color="#2a76a0"/>
+    <stop offset="1" stop-color="#223756"/>
+  </linearGradient>
+  <path fill="url(#b)" d="M54.05 163.6l50.83-50.83V65.1L52.96 117V56.94L-3.07 114.9H-54.7L79.63-17.24v58.41l60.08-58.38v98.3l98.21-98.37V88.09l105.1-105.38v58l56.9-58.04V73.7l86.8-88.87h96.91v1.5-1.5h3.55L558.6 14.26h-54.68l-17.39 15.71h27.8L480.93 63.4h-30.86l-17.35 16.5h91.54l-35 35H364.88V66.43L314.3 117V58.18l-56.72 56.71h-54.93V68.54l-95.07 95.06H54.05zM107.88 114L61.3 160.6h45.04l99.31-99.32v50.6h50.7l60.95-60.95v58.84l50.58-50.58v52.7h120.13l29-29h-91.8l23.65-22.5h30.82l27.41-27.42h-28.36l24.03-21.7h54.57l22.75-23.43h-92.1l-91.07 93.23V-9.98l-56.89 58.05v-58.1L234.92 95.35V-10.03l-98.2 98.38V-10.1L76.62 48.27v-58.35l-124 121.97h43.03l60.3-62.38v60.26l51.92-51.92v56.16z"/>
+  <g>
+    <path fill="#E2E2E2" d="M186.13 157.06v-47.34l-65.83 64h49v22.34h16.83v-22.34h18.83l17.84-16.66h-36.67zm-16.83 0h-10l10-11v11z"/>
+    <linearGradient id="c" gradientUnits="userSpaceOnUse" x1="171.58" y1="106.78" x2="171.58" y2="197.11">
+      <stop offset=".01" stop-color="#9ca3a6"/>
+      <stop offset="1" stop-color="#454547"/>
+    </linearGradient>
+    <path fill="url(#c)" d="M168.3 197.06v-22.34h-50.47l69.3-67.37v48.7h38.2l-19.97 18.67h-18.23v22.34H168.3zm-45.54-24.34h47.54v22.34h14.83v-22.34h19.44l15.69-14.66h-34.13v-1h1-1v1h-1v-45.97l-62.37 60.63zm34.28-14.66l13.26-14.6v14.6h-13.26zm12.26-1v-1 1zm-7.74-1h6.74v-7.42l-6.74 7.42z"/>
+  </g>
+  <g>
+    <linearGradient id="d" gradientUnits="userSpaceOnUse" x1="-429.72" y1="284.82" x2="-429.72" y2="154.63" gradientTransform="matrix(1 0 0 -1 654 409.23)">
+      <stop offset=".01" stop-color="#cbecfc"/>
+      <stop offset=".4" stop-color="#bbe3f7"/>
+      <stop offset=".54" stop-color="#2793c8"/>
+      <stop offset="1" stop-color="#1e8ec5"/>
+    </linearGradient>
+    <path fill="url(#d)" d="M163.21 247.39l122.13-120.12v90.12h-21.88v-34l-62.25 64z"/>
+    <g>
+      <linearGradient id="e" gradientUnits="userSpaceOnUse" x1="223.19" y1="122.28" x2="223.19" y2="219.61">
+        <stop offset="0" stop-color="#2a76a0"/>
+        <stop offset="1" stop-color="#223756"/>
+      </linearGradient>
+      <path fill="url(#e)" d="M163.22 248.89v-1.5l1.05 1.07-1.05-1.07v1.5h-3.67l127.29-125.2v95.2h-24.88v-31.8l-60.11 61.8h-38.63zm3.66-3h33.7l64.38-66.2v36.2h18.88v-85.05L166.88 245.9z"/>
+    </g>
+  </g>
+  <g>
+    <linearGradient id="f" gradientUnits="userSpaceOnUse" x1="-296.29" y1="284.84" x2="-296.29" y2="153.84" gradientTransform="matrix(1 0 0 -1 654 409.23)">
+      <stop offset=".01" stop-color="#cbecfc"/>
+      <stop offset=".4" stop-color="#bbe3f7"/>
+      <stop offset=".54" stop-color="#2793c8"/>
+      <stop offset="1" stop-color="#1e8ec5"/>
+    </linearGradient>
+    <path fill="url(#f)" d="M314.46 127.27l-18.5 19.87v70.25h123.5l-18.5-17h-53.5v-73.12l-19.25 19.87v53.25h-13.75z"/>
+    <g>
+      <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="358.89" y1="122.28" x2="358.89" y2="219.61">
+        <stop offset="0" stop-color="#2a76a0"/>
+        <stop offset="1" stop-color="#223756"/>
+      </linearGradient>
+      <path fill="url(#g)" d="M294.46 218.89v-72.34l18.9-20.31 2.6-2.79v75.44h10.75v-52.36l22.25-22.97v75.33h52.59l21.77 20H294.46zm3-71.16v68.16h118.15l-15.23-14h-54.42v-70.92l-16.25 16.78v54.14h-16.75v-70.82l-15.5 16.66z"/>
+    </g>
+  </g>
+</svg>

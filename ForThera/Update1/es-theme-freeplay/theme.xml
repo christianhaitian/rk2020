@@ -1,0 +1,39 @@
+<theme>
+
+    <formatVersion>4</formatVersion>
+	
+	<include>./color.xml</include>
+	<include>./metadata_none.xml</include>  <!-- Options: metadata_none, metadata_basic -->
+
+    <view name="system, basic, detailed, video">
+	
+		<image name="logo">
+			<path>./${system.theme}/system.svg</path>
+		</image>
+		
+		<textlist name="gamelist">
+			<selectorColor>${FPselectColor}</selectorColor>
+		</textlist>
+	</view>
+    
+	 <view name="system">
+		<image name="buttonmap" extra="true">
+			<path>./${system.theme}/buttons.svg</path>
+			<origin>0.5 0.5</origin>
+			<pos>0.5 0.220</pos>
+			<maxSize>1 0.320</maxSize>
+			<color>${FPselectColor}66</color>
+		</image>
+		
+		<textlist name="gamelist">
+			<selectorColor>${FPselectColor}</selectorColor>
+		</textlist>
+	</view>
+	
+	<view name="basic"></view>
+    
+	<view name="detailed"></view>
+
+	<include>./freeplay.xml</include>
+
+</theme>

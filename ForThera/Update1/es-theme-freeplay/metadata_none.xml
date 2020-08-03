@@ -1,0 +1,29 @@
+<theme>
+
+    <formatVersion>4</formatVersion>
+	
+	<view name="grid, detailed, video">
+	
+		<text name="md_lbl_rating, md_lbl_releasedate, md_lbl_developer, md_lbl_publisher, md_lbl_genre, md_lbl_players, md_lbl_lastplayed, md_lbl_playcount">
+			<pos>1 1</pos>
+		</text>
+
+	</view>
+    
+	<view name="basic"></view>
+    
+	<view name="detailed"></view>
+	
+	<view name="video">
+
+		<image name="md_marquee">
+			<maxSize>0.325 0.260</maxSize>
+			<pos>0.815 0.18</pos>
+			<origin>0.5 0.5</origin>
+		</image>
+
+	</view>
+	
+	<view name="grid"></view>
+
+</theme>

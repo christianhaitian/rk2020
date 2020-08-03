@@ -1,0 +1,51 @@
+<theme>
+
+<variables>	
+
+	<!-- LOGO: Options: freeplay, none -->
+	<FPlogo>freeplay</FPlogo>
+
+<!-- 
+************************************************************
+** BE SURE TO ONLY UNCOMMENT THE CODE FOR ONE COLOR BELOW **
+************************************************************
+-->
+	
+	<!-- RED THEME: Uncomment line below to activate -->
+	<!-- <FPthemeColor>d82113</FPthemeColor><FPselectColor>d82113</FPselectColor><FPtextColor>ffffff</FPtextColor> -->
+	
+	<!-- SPICE/ORANGE THEME: Uncomment line below to activate -->
+	<!-- <FPthemeColor>d8660d</FPthemeColor><FPselectColor>d8660d</FPselectColor><FPtextColor>000000</FPtextColor> -->
+	
+	<!-- GOLD THEME: Uncomment line below to activate -->
+	<!-- <FPthemeColor>f3d06a</FPthemeColor><FPselectColor>f3d06a</FPselectColor><FPtextColor>000000</FPtextColor> -->
+
+	<!-- YELLOW THEME: Uncomment line below to activate -->
+	<!-- <FPthemeColor>ffff00</FPthemeColor><FPselectColor>ffff00</FPselectColor><FPtextColor>000000</FPtextColor> -->
+
+	<!-- GREEN THEME: Uncomment line below to activate -->
+	<!-- <FPthemeColor>45a95f</FPthemeColor><FPselectColor>45a95f</FPselectColor><FPtextColor>ffffff</FPtextColor> -->
+
+	<!-- GLACIER/CLEAR-BLUE THEME: Uncomment line below to activate -->
+	<FPthemeColor>889cc2</FPthemeColor><FPselectColor>889cc2</FPselectColor><FPtextColor>000000</FPtextColor>
+	
+	<!-- BLUE THEME: Uncomment line below to activate -->
+	<!-- <FPthemeColor>476ade</FPthemeColor><FPselectColor>476ade</FPselectColor><FPtextColor>ffffff</FPtextColor> -->
+	
+	<!-- INDIGO/PURPLE THEME: Uncomment line below to activate -->
+	<!-- <FPthemeColor>6d60a3</FPthemeColor><FPselectColor>6d60a3</FPselectColor><FPtextColor>ffffff</FPtextColor> -->
+
+	<!-- FUCHSIA THEME: Uncomment line below to activate -->
+	<!-- <FPthemeColor>d898b0</FPthemeColor><FPselectColor>d898b0</FPselectColor><FPtextColor>000000</FPtextColor> -->
+	
+	<!-- BLACK THEME: Uncomment line below to activate -->
+	<!-- <FPthemeColor>333333</FPthemeColor><FPselectColor>cccccc</FPselectColor><FPtextColor>000000</FPtextColor> -->
+
+	<!-- PLATINUM THEME: Uncomment line below to activate -->
+	<!-- <FPthemeColor>9c9da2</FPthemeColor><FPselectColor>9c9da2</FPselectColor><FPtextColor>000000</FPtextColor> -->
+	
+	<!-- ARCTIC/WHITE THEME: Uncomment line below to activate -->
+	<!-- <FPthemeColor>ffffff</FPthemeColor><FPselectColor>ffffff</FPselectColor><FPtextColor>000000</FPtextColor> -->
+		
+	</variables>
+</theme>

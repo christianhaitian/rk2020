@@ -1,0 +1,222 @@
+<!--
+theme name:     Freeplay 
+version:        1.0
+author:         Brad Miller (RxBrad)
+email:          brad@rxbrad.com
+website:        rxbrad.com & freeplaytech.com
+license:        creative commons CC-BY-NC-SA - https://creativecommons.org/licenses/by-nc-sa/3.0/
+
+credits to:     
+- multiple system logo assets: from the "Carbon" theme by Rookervik
+- "Ports" carousel background: "Export" by Jake Dunham from the Noun Project
+-->
+
+<theme>
+    <formatVersion>4</formatVersion>
+
+
+	
+	<feature supported="carousel">
+		<view name="system">
+		  <carousel name="systemcarousel">
+			   <type>horizontal_wheel</type>
+			   <origin>0.5 0.5</origin>
+			   <pos>0.5 0.5</pos>
+			   <size>1 1</size>
+			   <color>00000000</color>
+			   <logoScale>2.00</logoScale>
+			   <logoSize>0.175 0.14</logoSize>
+			   <maxLogoCount>3</maxLogoCount>
+			   <logoRotation>-7.8</logoRotation>
+			   <logoRotationOrigin>0.5 -25</logoRotationOrigin>
+
+			   <zIndex>75</zIndex>
+		  </carousel>
+		  
+		  <text name="logoText">
+			<color>FFFFFF</color>
+			<fontPath>./_inc/fonts/Helsinki-Narrow.ttf</fontPath>
+			<forceUppercase>false</forceUppercase>
+		  </text>
+
+		  	<image name="logo">
+				<color>FFFFFFFF</color>
+			</image>
+		  
+		  <image name="carousel_background" extra="true">
+			<path>./_inc/images/menu_glass.png</path>
+			<origin>0.5 1</origin>
+			<pos>0.5 0.65</pos>
+			<maxSize>1.2 5</maxSize>
+			<rotation>180</rotation>
+			<color>ffffffff</color>
+		</image>
+		  
+			<text name="systemInfo">
+				<backgroundColor>11111100</backgroundColor>
+				<color>${FPtextColor}</color>
+				<pos>0 0.655</pos>
+				<size>1 0.062</size>
+				<fontPath>./_inc/fonts/Erbaum-Book.otf</fontPath>
+				<fontSize>0.05</fontSize>
+
+			</text>
+		</view>
+	</feature>
+
+    <view name="system, basic, detailed, video">
+		<image name="background_color" extra="true">
+			<path>./_inc/images/bg_color.png</path>
+			<origin>0 0</origin>
+			<pos>0 0</pos>
+			<size>1 1</size>
+			<color>${FPthemeColor}</color>
+		</image>
+		<image name="background_gradient" extra="true">
+			<path>./_inc/images/bg_gradient.png</path>
+			<origin>0 0</origin>
+			<pos>0 0</pos>
+			<size>1 1</size>
+		</image>
+		<image name="background_help" extra="true">
+			<path>./_inc/images/bg_color.png</path>
+			<origin>0 1</origin>
+			<pos>0 1</pos>
+			<size>1 0.070</size>
+			<color>${FPselectColor}</color>
+			<zIndex>99</zIndex>
+		</image>
+		<helpsystem name="help">
+			<textColor>${FPtextColor}</textColor>
+			<iconColor>${FPtextColor}</iconColor>
+			<fontPath>./_inc/fonts/Helsinki-Narrow.ttf</fontPath>
+			<fontSize>0.04</fontSize>
+		</helpsystem>
+	</view>
+    
+	<view name="basic">
+		<image name="logo" extra="false">
+			<origin>0.5 0</origin>
+			<pos>0.5 0.04</pos>
+			<maxSize>0.45 0.08</maxSize>
+		</image>
+		
+		<text name="logoText">
+			<color>FFFFFF</color>
+			<origin>0.5 0</origin>
+			<pos>0.5 0.04</pos>
+			<fontSize>0.055</fontSize>
+			<fontPath>./_inc/fonts/Erbaum-Bold.otf</fontPath>
+	    </text>
+
+		<textlist name="gamelist">
+			<selectorColor>${FPselectColor}</selectorColor>
+			<selectedColor>${FPtextColor}</selectedColor>
+			<primaryColor>ffffff</primaryColor>
+			<secondaryColor>ffff80</secondaryColor>
+			<fontPath>./_inc/fonts/Helsinki-Narrow.ttf</fontPath>
+			<pos>0.03 0.15</pos>
+			<size>0.937 0.74</size>
+			<fontSize>0.06</fontSize>
+			<lineSpacing>1.51</lineSpacing>
+		</textlist>
+		
+		<image name="gamelist_background" extra="true">
+			<path>./_inc/images/menu_glass.png</path>
+			<origin>0.5 0</origin>
+			<pos>0.5 0.0</pos>
+			<size>1 0.92</size>
+			<color>ffffffff</color>
+		</image>
+	</view>
+	
+    <view name="detailed">
+		<image name="md_image">
+		<origin>0.5 1</origin>
+		<pos>0.815 0.89</pos>
+		<maxSize>0.325 0.6</maxSize>
+		<default>./_inc/images/missing_logo_${FPlogo}.png</default>
+		</image>
+		
+		<image name="metadata_background" extra="true">
+			<path>./_inc/images/detail_indent_logo_${FPlogo}.png</path>
+			<origin>0 0</origin>
+			<pos>0.64 0.02</pos>
+			<size>0.35 0.89</size>
+			<color>ffffff33</color>
+		</image>
+	</view>
+
+	<feature supported="video">
+		<view name="video">
+			<video name="md_video">
+				<origin>0.5 1</origin>
+				<pos>0.815 0.89</pos>
+				<maxSize>0.325 0.325</maxSize>
+				<delay>1</delay>
+				<showSnapshotNoVideo>true</showSnapshotNoVideo>
+				<showSnapshotDelay>true</showSnapshotDelay>
+			</video>
+			
+			<image name="metadata_background" extra="true">
+				<path>./_inc/images/video_indent_logo_${FPlogo}.png</path>
+				<origin>0 0</origin>
+				<pos>0.64 0.02</pos>
+				<size>0.35 0.89</size>
+				<color>ffffff33</color>
+			</image>
+		</view>
+
+	</feature>
+	
+	<feature supported="z-index">
+		<view name="video">
+			<video name="md_video">
+			<zIndex>120</zIndex>
+			</video>
+			<image name="md_marquee">
+			<zIndex>140</zIndex>
+			</image>
+		</view>
+	</feature>
+	
+	<view name="detailed,video">
+
+		<image name="gamelist_background" extra="true">
+			<path>./_inc/images/menu_glass.png</path>
+			<origin>0 0</origin>
+			<pos>0.003 0.0</pos>
+			<size>0.63 0.92</size>
+			<color>ffffffff</color>
+		</image>
+
+		<text name="logoText">
+			<color>FFFFFF</color>
+			<origin>0.5 0</origin>
+			<pos>0.315 0.04</pos>
+			<fontSize>0.055</fontSize>
+			<fontPath>./_inc/fonts/Erbaum-Bold.otf</fontPath>
+	    </text>
+		
+		<image name="logo">
+			<origin>0.5 0</origin>
+			<pos>0.315 0.04</pos>
+			<maxSize>0.45 0.08</maxSize>
+		</image>
+		
+		<textlist name="gamelist">
+			<selectorColor>${FPselectColor}</selectorColor>
+			<selectedColor>${FPtextColor}</selectedColor>
+			<primaryColor>ffffff</primaryColor>
+			<secondaryColor>ffff80</secondaryColor>
+			<fontPath>./_inc/fonts/Helsinki-Narrow.ttf</fontPath>
+			<pos>0.02 0.15</pos>
+			<size>0.595 0.74</size>
+			<fontSize>0.06</fontSize>
+			<lineSpacing>1.51</lineSpacing>
+			<horizontalMargin>0.01</horizontalMargin>
+		</textlist>
+	
+	</view>
+
+</theme>

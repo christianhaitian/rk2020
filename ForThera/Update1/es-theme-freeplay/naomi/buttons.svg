@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="buttons.svg"
+   id="svg22"
+   version="1.1"
+   width="1080"
+   height="360"
+   viewBox="0 0 285.75 95.25">
+  <metadata
+     id="metadata28">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs26" />
+  <sodipodi:namedview
+     inkscape:current-layer="g20"
+     inkscape:window-maximized="1"
+     inkscape:window-y="-11"
+     inkscape:window-x="-11"
+     inkscape:cy="176.54584"
+     inkscape:cx="540"
+     inkscape:zoom="1.3027778"
+     inkscape:pagecheckerboard="true"
+     showgrid="false"
+     id="namedview24"
+     inkscape:window-height="986"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <g
+     id="g20"
+     fill="#fff">
+    <circle
+       id="circle2"
+       cx="174.20856"
+       cy="39.939278"
+       r="8.8199997" />
+    <circle
+       id="circle4"
+       cx="199.33636"
+       cy="43.798016"
+       r="8.8199997" />
+    <circle
+       id="circle6"
+       cx="151.30472"
+       cy="51.109318"
+       r="8.8199997" />
+    <circle
+       id="circle8"
+       cx="174.69781"
+       cy="61.876186"
+       r="8.8199997" />
+    <circle
+       id="circle10"
+       cx="197.79474"
+       cy="65.531837"
+       r="8.8199997" />
+    <circle
+       r="8.8199997"
+       id="circle12"
+       cx="150.98163"
+       cy="71.421494" />
+    <circle
+       id="circle14"
+       cx="100.95"
+       cy="33.78"
+       r="8.82" />
+    <rect
+       id="rect16"
+       width="7.48"
+       height="23.79"
+       x="97.21"
+       y="36.46"
+       rx="3.97"
+       ry="1.32" />
+    <path
+       id="path18"
+       d="M100.95 52.97a20.31 6.15 0 0 0-20.31 6.14 20.31 6.15 0 0 0 20.31 6.15 20.31 6.15 0 0 0 20.31-6.15 20.31 6.15 0 0 0-20.31-6.14zm0 .8a17.22 5.21 0 0 1 17.22 5.21 17.22 5.21 0 0 1-17.22 5.21A17.22 5.21 0 0 1 83.73 59a17.22 5.21 0 0 1 17.22-5.22z" />
+  </g>
+</svg>

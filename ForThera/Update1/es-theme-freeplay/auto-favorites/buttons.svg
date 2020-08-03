@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 285.75 95.25" height="360" width="1080">
+  <defs>
+    <clipPath id="a">
+      <path d="M0 452h610V0H0z"/>
+    </clipPath>
+  </defs>
+  <g style="line-height:1.25;-inkscape-font-specification:Wingdings">
+    <path style="-inkscape-font-specification:Wingdings" d="M111.9 40.66h23.66l7.31-22.5 7.32 22.5h23.66L154.73 54.6l7.3 22.5-19.16-13.91-19.16 13.92 7.31-22.51z" aria-label="«" font-weight="400" font-size="90.23" font-family="Wingdings" letter-spacing="0" word-spacing="0" fill="#fff" stroke-width=".34"/>
+  </g>
+</svg>
