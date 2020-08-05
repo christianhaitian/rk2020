@@ -97,8 +97,13 @@ sudo service emulationstation stop
 sudo mv /usr/bin/emulationstation/emulationstation /usr/bin/emulationstation/emulationstation.update1.bak
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/emulationstation/emulationstation -P /usr/bin/emulationstation/ | tee -a "$LOG_FILE"
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/emulationstation/system.png -O /etc/emulationstation/themes/"Retro Arena Redux"/retropie/system.png | tee -a "$LOG_FILE"
+sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es_input_paging.txt -O /home/odroid/es_input_paging.txt | tee -a "$LOG_FILE"
+
+printf "\nAdd page up and page down for rom lists in emulationstation....\n" | tee -a "$LOG_FILE"
+sudo sed -e '/\/inputConfig/{r /home/odroid/es_input_paging.txt' -e 'd}' /etc/emulationstation/es_input.cfg > /home/odroid/es_input_temp.cfg
+sudo cp /etc/emulationstation/es_input.cfg /etc/emulationstation/es_input.cfg.update1.bak
+sudo mv -f /home/odroid/es_input_temp.cfg /etc/emulationstation/es_input.cfg
 sudo chmod 777 /usr/bin/emulationstation/emulationstation
-sudo service emulationstation start
 
 printf "\nDownloading and copying updated retroarch 1.8.9 executables...\n"
 sudo mv /opt/retroarch/bin/retroarch /opt/retroarch/bin/retroarch.update1.bak
@@ -158,6 +163,7 @@ sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1
 sudo sed -e '/ScreenSaverBehavior/{r /home/odroid/es_setting_change.txt' -e 'd}' /home/odroid/.emulationstation/es_settings.cfg > /home/odroid/newes_settings.cfg
 sudo mv -f /home/odroid/newes_settings.cfg /home/odroid/.emulationstation/es_settings.cfg
 sudo rm /home/odroid/es_setting_change.txt
+sudo service emulationstation start
 
 printf "\nLast but not least, let's ensure that Drastic performance has not been negatively impacted by these updates...\n" | tee -a "$LOG_FILE"
 sudo ln -sf /usr/lib/arm-linux-gnueabihf/libSDL2-2.0.so.0.10.0 /usr/lib/arm-linux-gnueabihf/libSDL2-2.0.so.0
