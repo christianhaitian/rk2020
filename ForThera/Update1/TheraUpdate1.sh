@@ -74,7 +74,7 @@ else
   printf "\nDownloading and copying imageshift script to proper location and setting cron job at each boot...\n" | tee -a "$LOG_FILE"
   sudo wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/imageshift.sh -P /home/odroid/.config/  | tee -a "$LOG_FILE"
   sudo chmod 777 /home/odroid/.config/imageshift.sh | tee -a "$LOG_FILE"
-  sudo crontab -l | sed '$ a\@reboot /home/odroid/.config/imageshift.sh' | sudo crontab -  | tee -a "$LOG_FILE"
+  (sudo crontab -l 2>/dev/null; echo "@reboot /home/odroid/.config/imageshift.sh") | sudo crontab -  | tee -a "$LOG_FILE"
   sudo service cron reload | tee -a "$LOG_FILE"
 fi
 
