@@ -121,8 +121,11 @@ if [ -d "/roms/quake" ]; then
   sudo mv -f /roms/quake /roms/ports/quake
   sudo mkdir /roms/ports/quake/quakepaks
   sudo mv -f /roms/ports/quake/*.pak /roms/quake/quakepaks
+  sudo touch /roms/ports/quake/quakepaks/"PUT YOUR PAK FILES HERE"
   sudo mv -f /roms/pico-8/* /roms/ports/pico-8/
+  sudo touch /roms/ports/pico-8/"PUT YOUR PICO-8 PNG FILES HERE"
   sudo rm -rf /roms/pico-8
+  sudo rm /roms/ports/pico-8/Pico-8.sh
   sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/ports/Pico-8.sh -P /roms/ports/ | tee -a "$LOG_FILE"
   sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/ports/Quake.sh -P /roms/ports/ | tee -a "$LOG_FILE"
   sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/ports/opt/pico-8.sh -O /opt/pico-8/pico-8.sh | tee -a "$LOG_FILE"
