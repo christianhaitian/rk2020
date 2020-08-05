@@ -84,7 +84,7 @@ sudo tar -xf es-theme-freeplay.tar -C /etc/emulationstation/themes/ | tee -a "$L
 sudo rm es-theme-freeplay.tar | tee -a "$LOG_FILE"
 
 printf "\nChange Atomiswave from retrorun to using the retroarch 64 bit flycast libretro emulator core instead...\n" | tee -a "$LOG_FILE"
-suco cp /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.update1.bak
+sudo cp /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.update1.bak
 sudo sed -i 's+retrorun32 -s ~ -d /opt/libretro/flycast /opt/libretro/flycast/flycast_libretro.so+/usr/local/bin/retroarch -L /home/odroid/.config/retroarch/cores/flycast_libretro.so+g' /etc/emulationstation/es_systems.cfg
 
 printf "\nDownloading and copying updated PPSSPPSDL...\n" | tee -a "$LOG_FILE"
