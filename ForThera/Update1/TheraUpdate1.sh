@@ -53,16 +53,16 @@ LOGODIR="/boot/BMPs/"
 
 if [ -d "$LOGODIR" ]; then
   printf "\nDownloading and copying logos to /boot/BMPs folder if they don't exist already...\n" | tee -a "$LOG_FILE"
-  sudo wget -nc https://github.com/christianhaitian/rk2020/tree/master/ForThera/Update1/BMPs/logo1.bmp -P /boot/BMPs/ | tee -a "$LOG_FILE"
-  sudo wget -nc https://github.com/christianhaitian/rk2020/tree/master/ForThera/Update1/BMPs/logo2.bmp -P /boot/BMPs/ | tee -a "$LOG_FILE"
-  sudo wget -nc https://github.com/christianhaitian/rk2020/tree/master/ForThera/Update1/BMPs/logo3.bmp -P /boot/BMPs/ | tee -a "$LOG_FILE"
+  sudo wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/BMPs/logo1.bmp -P /boot/BMPs/ | tee -a "$LOG_FILE"
+  sudo wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/BMPs/logo2.bmp -P /boot/BMPs/ | tee -a "$LOG_FILE"
+  sudo wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/BMPs/logo3.bmp -P /boot/BMPs/ | tee -a "$LOG_FILE"
 else
   printf "\nCreating logo directory in boot folder...\n" | tee -a "$LOG_FILE"
   sudo mkdir /boot/BMPs | tee -a "$LOG_FILE"
   printf "\nDownloading and copying logos to /boot/BMPs folder...\n" | tee -a "$LOG_FILE"
-  sudo wget -nc https://github.com/christianhaitian/rk2020/tree/master/ForThera/Update1/BMPs/logo1.bmp -P /boot/BMPs/ | tee -a "$LOG_FILE"
-  sudo wget -nc https://github.com/christianhaitian/rk2020/tree/master/ForThera/Update1/BMPs/logo2.bmp -P /boot/BMPs/ | tee -a "$LOG_FILE"
-  sudo wget -nc https://github.com/christianhaitian/rk2020/tree/master/ForThera/Update1/BMPs/logo3.bmp -P /boot/BMPs/ | tee -a "$LOG_FILE"
+  sudo wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/BMPs/logo1.bmp -P /boot/BMPs/ | tee -a "$LOG_FILE"
+  sudo wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/BMPs/logo2.bmp -P /boot/BMPs/ | tee -a "$LOG_FILE"
+  sudo wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/BMPs/logo3.bmp -P /boot/BMPs/ | tee -a "$LOG_FILE"
   sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/imageshift.sh -P /home/odroid/.config  | tee -a "$LOG_FILE"
 fi
 
