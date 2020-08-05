@@ -96,7 +96,7 @@ printf "\nDownloading and copying updated emulationstation....\n" | tee -a "$LOG
 sudo service emulationstation stop
 sudo mv /usr/bin/emulationstation/emulationstation /usr/bin/emulationstation/emulationstation.update1.bak
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/emulationstation/emulationstation -P /usr/bin/emulationstation/ | tee -a "$LOG_FILE"
-sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/emulationstation/system.png -O /etc/emulationstation/themes/Retro Arena Redux/retropie/system.png | tee -a "$LOG_FILE"
+sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/emulationstation/system.png -O /etc/emulationstation/themes/"Retro Arena Redux"/retropie/system.png | tee -a "$LOG_FILE"
 sudo chmod 777 /usr/bin/emulationstation/emulationstation
 sudo service emulationstation start
 
