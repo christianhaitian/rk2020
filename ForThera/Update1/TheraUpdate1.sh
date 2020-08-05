@@ -97,9 +97,9 @@ sudo service emulationstation stop
 sudo mv /usr/bin/emulationstation/emulationstation /usr/bin/emulationstation/emulationstation.update1.bak
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/emulationstation/emulationstation -P /usr/bin/emulationstation/ | tee -a "$LOG_FILE"
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/emulationstation/system.png -O /etc/emulationstation/themes/"Retro Arena Redux"/retropie/system.png | tee -a "$LOG_FILE"
-sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es_input_paging.txt -O /home/odroid/es_input_paging.txt | tee -a "$LOG_FILE"
 
 printf "\nAdd page up and page down for rom lists in emulationstation....\n" | tee -a "$LOG_FILE"
+sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es_input_paging.txt -O /home/odroid/es_input_paging.txt | tee -a "$LOG_FILE"
 sudo sed -e '/\/inputConfig/{r /home/odroid/es_input_paging.txt' -e 'd}' /etc/emulationstation/es_input.cfg > /home/odroid/es_input_temp.cfg
 sudo cp /etc/emulationstation/es_input.cfg /etc/emulationstation/es_input.cfg.update1.bak
 sudo mv -f /home/odroid/es_input_temp.cfg /etc/emulationstation/es_input.cfg
