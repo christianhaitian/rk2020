@@ -105,6 +105,18 @@ sudo mv /opt/retroarch/bin/retroarch /opt/retroarch/bin/retroarch.update1.bak
 sudo mv /opt/retroarch/bin/retroarch32 /opt/retroarch/bin/retroarch32.update1.bak
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/retroarch/retroarch -P /opt/retroarch/bin/ | tee -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/retroarch/retroarch32 -P /opt/retroarch/bin/ | tee -a "$LOG_FILE"
+sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/ra_save_dir.txt -P /home/odroid/ | tee -a "$LOG_FILE"
+sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/ra_savestate_dir.txt -P /home/odroid/ | tee -a "$LOG_FILE"
+sudo sed -e '/savefiles_in_content_dir/{r /home/odroid/ra_save_dir.txt' -e 'd}' /home/odroid/.config/retroarch/retroarch.cfg > /home/odroid/retroarch64.cfg
+sudo sed -e '/savefiles_in_content_dir/{r /home/odroid/ra_save_dir.txt' -e 'd}' /home/odroid/.config/retroarch32/retroarch.cfg > /home/odroid/retroarch32.cfg
+sudo mv /home/odroid/retroarch64.cfg /home/odroid/.config/retroarch/retroarch.cfg
+sudo mv /home/odroid/retroarch32.cfg /home/odroid/.config/retroarch32/retroarch.cfg
+sudo rm /home/odroid/ra_save_dir.txt
+sudo sed -e '/savestates_in_content_dir/{r /home/odroid/ra_savestate_dir.txt' -e 'd}' /home/odroid/.config/retroarch/retroarch.cfg > /home/odroid/retroarch64.cfg
+sudo sed -e '/savestates_in_content_dir/{r /home/odroid/ra_savestate_dir.txt' -e 'd}' /home/odroid/.config/retroarch32/retroarch.cfg > /home/odroid/retroarch32.cfg
+sudo mv /home/odroid/retroarch64.cfg /home/odroid/.config/retroarch/retroarch.cfg
+sudo mv /home/odroid/retroarch32.cfg /home/odroid/.config/retroarch32/retroarch.cfg
+sudo rm /home/odroid/ra_savestate_dir.txt
 sudo apt -y install libqt5gui5 libv4l-dev | tee -a "$LOG_FILE"
 sudo chmod 777 /opt/retroarch/bin/retroarch
 sudo chmod 777 /opt/retroarch/bin/retroarch32
