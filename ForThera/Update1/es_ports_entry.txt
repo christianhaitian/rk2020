@@ -1,0 +1,7 @@
+		<name>Ports</name>
+		<fullname>ports</fullname>
+		<path>/roms/ports/</path>
+		<extension>.sh .SH</extension>
+		<command>%ROM%</command>
+		<platform>pc</platform>
+		<theme>ports</theme>
