@@ -128,6 +128,7 @@ if [ -d "/roms/quake" ]; then
   sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es_ports_entry.txt -O /home/odroid/es_ports_entry.txt | tee -a "$LOG_FILE"
   sudo sed -e '/Quake/,+5d' -e '/quake/{r /home/odroid/es_ports_entry.txt' -e 'd}' /etc/emulationstation/es_systems.cfg > /home/odroid/es_systems_temp.cfg
   sudo mv -f /home/odroid/es_systems_temp.cfg /etc/emulationstation/es_systems.cfg
+  sudo rm /home/odroid/es_ports_entry.txt
   sudo mkdir /roms/ports
   sudo mkdir /roms/ports/pico-8
   sudo mv -f /roms/quake /roms/ports/quake
@@ -156,10 +157,12 @@ printf "\nUpdate emulationstation config to default screen timeout to black...\n
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es_setting_change.txt -O /home/odroid/es_setting_change.txt | tee -a "$LOG_FILE"
 sudo sed -e '/ScreenSaverBehavior/{r /home/odroid/es_setting_change.txt' -e 'd}' /home/odroid/.emulationstation/es_settings.cfg > /home/odroid/newes_settings.cfg
 sudo mv -f /home/odroid/newes_settings.cfg /home/odroid/.emulationstation/es_settings.cfg
+sudo rm /home/odroid/es_setting_change.txt
 
 printf "\nLast but not least, let's ensure that Drastic performance has not been negatively impacted by these updates...\n" | tee -a "$LOG_FILE"
 sudo ln -sf /usr/lib/arm-linux-gnueabihf/libSDL2-2.0.so.0.10.0 /usr/lib/arm-linux-gnueabihf/libSDL2-2.0.so.0
 
 printf "\nAll Done!\n\n\e[39m"  | tee -a "$LOG_FILE"
+rm -- "$0"
 exit 0
 done
