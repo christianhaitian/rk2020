@@ -1,4 +1,3 @@
                 <input name="pagedown" type="button" id="5" value="1" />
                 <input name="pageup" type="button" id="4" value="1" />
         </inputConfig>
-        
