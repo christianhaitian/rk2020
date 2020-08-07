@@ -150,6 +150,9 @@ if [ -d "/roms/quake" ]; then
   sudo chmod 777 /opt/pico-8/pico-8.sh
 fi
 
+printf "\nMake sure nmbd service is disabled on boot to minimize on unnecessary services running...\n" | tee -a "$LOG_FILE"
+sudo systemctl disable nmbd
+
 printf "\nSecure samba with odroid login credentials and update remote services scripts...\n" | tee -a "$LOG_FILE"
 echo -e "odroid\nodroid" | sudo smbpasswd -s -a odroid  | tee -a "$LOG_FILE"
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/samba/smb.conf -O /etc/samba/smb.conf | tee -a "$LOG_FILE"
