@@ -159,6 +159,10 @@ printf "\nAdd Fix NTFS ability to options menu if ever needed...\n" | tee -a "$L
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/system/Fix%20NTFS%20Partition.sh -O /opt/system/"Fix NTFS Partition.sh" | tee -a "$LOG_FILE"
 sudo chmod 777 /opt/system/"Fix NTFS Partition.sh"
 
+printf "\nAdd Genuine check ability to options menu...\n" | tee -a "$LOG_FILE"
+sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/system/RK2020%20Genuine%20Check.sh -O /opt/system/"RK2020 Genuine Check.sh" | tee -a "$LOG_FILE"
+sudo chmod 775 /opt/system/"RK2020 Genuine Check.sh"
+
 printf "\nSecure samba with odroid login credentials and update remote services scripts...\n" | tee -a "$LOG_FILE"
 echo -e "odroid\nodroid" | sudo smbpasswd -s -a odroid  | tee -a "$LOG_FILE"
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/samba/smb.conf -O /etc/samba/smb.conf | tee -a "$LOG_FILE"
