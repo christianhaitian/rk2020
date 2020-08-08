@@ -173,10 +173,15 @@ sudo mv -f /home/odroid/newes_settings.cfg /home/odroid/.emulationstation/es_set
 sudo rm /home/odroid/es_setting_change.txt
 sudo service emulationstation start
 
+printf "\nChange hostname from goadvance to rk2020....\n" | tee -a "$LOG_FILE"
+sudo sed -i 's/goadvance/rk2020/g' /etc/hostname
+
 printf "\nLast but not least, let's ensure that Drastic performance has not been negatively impacted by these updates...\n" | tee -a "$LOG_FILE"
 sudo ln -sf /usr/lib/arm-linux-gnueabihf/libSDL2-2.0.so.0.10.0 /usr/lib/arm-linux-gnueabihf/libSDL2-2.0.so.0
 
-printf "\nAll Done!\n\n\e[39m"  | tee -a "$LOG_FILE"
+printf "\nAll Done! Be aware that the hostname of your device has changed from goadvance to rk2020.\n" | tee -a "$LOG_FILE"
+printf "\nThis will take effect the next time you reboot this device.\n\n\e[39m" | tee -a "$LOG_FILE"
+
 rm -- "$0"
 exit 0
 done
