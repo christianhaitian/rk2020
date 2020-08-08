@@ -46,6 +46,7 @@ fi
 
 printf "\nFirst, let's upgrade the installed packages in this distro to the latest...\n" | tee -a "$LOG_FILE"
 sudo apt update -y | tee -a "$LOG_FILE"
+sudo apt-mark hold linux-odroid-go2 | tee -a "$LOG_FILE"
 sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y | tee -a "$LOG_FILE"
 printf "\nNow that that's done, let's move on with the rest of the updates...\n" | tee -a "$LOG_FILE"
 
@@ -79,7 +80,7 @@ else
 fi
 
 printf "\nDownloading and copying es-theme-freeplay theme to the emulationstation themes folder...\n"  | tee -a "$LOG_FILE"
-wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es-theme-freeplay.tar | tee -a "$LOG_FILE"
+wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es-theme-freeplay.tar | tee -a "$LOG_FILE"
 sudo tar -xf es-theme-freeplay.tar -C /etc/emulationstation/themes/ | tee -a "$LOG_FILE"
 sudo rm es-theme-freeplay.tar | tee -a "$LOG_FILE"
 
