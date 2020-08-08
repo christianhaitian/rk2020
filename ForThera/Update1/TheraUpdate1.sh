@@ -105,6 +105,7 @@ sudo sed -e '/\/inputConfig/{r /home/odroid/es_input_paging.txt' -e 'd}' /etc/em
 sudo cp /etc/emulationstation/es_input.cfg /etc/emulationstation/es_input.cfg.update1.bak
 sudo mv -f /home/odroid/es_input_temp.cfg /etc/emulationstation/es_input.cfg
 sudo chmod 777 /usr/bin/emulationstation/emulationstation
+sudo rm /home/odroid/es_input_paging.txt
 
 printf "\nDownloading and copying updated retroarch 1.8.9 executables...\n"
 sudo mv /opt/retroarch/bin/retroarch /opt/retroarch/bin/retroarch.update1.bak
