@@ -64,7 +64,7 @@ else
   sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/BMPs/logo1.bmp -O /boot/BMPs/logo1.bmp | tee -a "$LOG_FILE"
   sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/BMPs/logo2.bmp -O /boot/BMPs/logo2.bmp | tee -a "$LOG_FILE"
   sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/BMPs/logo3.bmp -O /boot/BMPs/logo3.bmp | tee -a "$LOG_FILE"
-  sudo wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/imageshift.sh -P /home/odroid/.config  | tee -a "$LOG_FILE"
+  wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/imageshift.sh -P /home/odroid/.config  | tee -a "$LOG_FILE"
 fi
 
 IMAGESHIFTEXIST=$(sudo crontab -l | sed -n '/imageshift.sh/p')
@@ -73,7 +73,7 @@ if [[ "$IMAGESHIFTEXIST" == *"imageshift.sh"* ]]; then
   printf "\nimageshift script already exists, moving on...\n" | tee -a "$LOG_FILE"
 else
   printf "\nDownloading and copying imageshift script to proper location and setting cron job at each boot...\n" | tee -a "$LOG_FILE"
-  sudo wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/imageshift.sh -P /home/odroid/.config/  | tee -a "$LOG_FILE"
+  wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/imageshift.sh -P /home/odroid/.config/  | tee -a "$LOG_FILE"
   sudo chmod 777 /home/odroid/.config/imageshift.sh | tee -a "$LOG_FILE"
   (sudo crontab -l 2>/dev/null; echo "@reboot /home/odroid/.config/imageshift.sh") | sudo crontab -  | tee -a "$LOG_FILE"
   sudo service cron reload | tee -a "$LOG_FILE"
@@ -85,17 +85,17 @@ if [ -d "$SUPERRETROOGA" ]; then
 else 
    printf "\nDownloading and copying es-theme-super-retro-oga theme to the emulationstation themes folder...\n" | tee -a "$LOG_FILE"
    sudo mkdir /etc/emulationstation/themes/es-theme-super-retro-oga/
-   sudo git clone https://github.com/tiduscrying/es-theme-super-retro-oga.git /etc/emulationstation/themes/es-theme-super-retro-oga/.
+   git clone https://github.com/tiduscrying/es-theme-super-retro-oga.git /etc/emulationstation/themes/es-theme-super-retro-oga/.
 fi
 
 printf "\nDownloading and copying es-theme-freeplay theme to the emulationstation themes folder...\n" | tee -a "$LOG_FILE"
 wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es-theme-freeplay.tar | tee -a "$LOG_FILE"
-sudo tar -xf es-theme-freeplay.tar -C /etc/emulationstation/themes/ | tee -a "$LOG_FILE"
+tar -xf es-theme-freeplay.tar -C /etc/emulationstation/themes/ | tee -a "$LOG_FILE"
 sudo rm es-theme-freeplay.tar | tee -a "$LOG_FILE"
 
 printf "\nChange Atomiswave from retrorun to using the retroarch 64 bit flycast libretro emulator core instead...\n" | tee -a "$LOG_FILE"
 sudo cp /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.update1.bak
-sudo sed -i 's+retrorun32 -s ~ -d /opt/libretro/flycast /opt/libretro/flycast/flycast_libretro.so+/usr/local/bin/retroarch -L /home/odroid/.config/retroarch/cores/flycast_libretro.so+g' /etc/emulationstation/es_systems.cfg
+sed -i 's+retrorun32 -s ~ -d /opt/libretro/flycast /opt/libretro/flycast/flycast_libretro.so+/usr/local/bin/retroarch -L /home/odroid/.config/retroarch/cores/flycast_libretro.so+g' /etc/emulationstation/es_systems.cfg
 
 printf "\nDownloading and copying updated PPSSPPSDL...\n" | tee -a "$LOG_FILE"
 sudo mv /opt/ppsspp/PPSSPPSDL /opt/ppsspp/PPSSPPSDL.update1.bak
@@ -106,44 +106,46 @@ printf "\nDownloading and copying updated emulationstation....\n" | tee -a "$LOG
 sudo service emulationstation stop
 sudo mv /usr/bin/emulationstation/emulationstation /usr/bin/emulationstation/emulationstation.update1.bak
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/emulationstation/emulationstation -P /usr/bin/emulationstation/ | tee -a "$LOG_FILE"
-sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/emulationstation/system.png -O /etc/emulationstation/themes/"Retro Arena Redux"/retropie/system.png | tee -a "$LOG_FILE"
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/emulationstation/system.png -O /etc/emulationstation/themes/"Retro Arena Redux"/retropie/system.png | tee -a "$LOG_FILE"
 
 printf "\nAdd page up and page down for rom lists in emulationstation....\n" | tee -a "$LOG_FILE"
-sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es_input_paging.txt -O /home/odroid/es_input_paging.txt | tee -a "$LOG_FILE"
-sudo sed -e '/\/inputConfig/{r /home/odroid/es_input_paging.txt' -e 'd}' /etc/emulationstation/es_input.cfg > /home/odroid/es_input_temp.cfg
-sudo cp /etc/emulationstation/es_input.cfg /etc/emulationstation/es_input.cfg.update1.bak
-sudo mv -f /home/odroid/es_input_temp.cfg /etc/emulationstation/es_input.cfg
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es_input_paging.txt -O /home/odroid/es_input_paging.txt | tee -a "$LOG_FILE"
+sed -e '/\/inputConfig/{r /home/odroid/es_input_paging.txt' -e 'd}' /etc/emulationstation/es_input.cfg > /home/odroid/es_input_temp.cfg
+cp /etc/emulationstation/es_input.cfg /etc/emulationstation/es_input.cfg.update1.bak
+mv -f /home/odroid/es_input_temp.cfg /etc/emulationstation/es_input.cfg
 sudo chmod 777 /usr/bin/emulationstation/emulationstation
 sudo rm /home/odroid/es_input_paging.txt
 
 printf "\nDownloading and copying updated retroarch 1.8.9 executables...\n"
-sudo mv /opt/retroarch/bin/retroarch /opt/retroarch/bin/retroarch.update1.bak
-sudo mv /opt/retroarch/bin/retroarch32 /opt/retroarch/bin/retroarch32.update1.bak
+mv /opt/retroarch/bin/retroarch /opt/retroarch/bin/retroarch.update1.bak
+mv /opt/retroarch/bin/retroarch32 /opt/retroarch/bin/retroarch32.update1.bak
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/retroarch/retroarch -P /opt/retroarch/bin/ | tee -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/retroarch/retroarch32 -P /opt/retroarch/bin/ | tee -a "$LOG_FILE"
-sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/ra_save_dir.txt -P /home/odroid/ | tee -a "$LOG_FILE"
-sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/ra_savestate_dir.txt -P /home/odroid/ | tee -a "$LOG_FILE"
-sudo sed -e '/savefiles_in_content_dir/{r /home/odroid/ra_save_dir.txt' -e 'd}' /home/odroid/.config/retroarch/retroarch.cfg > /home/odroid/retroarch64.cfg
-sudo sed -e '/savefiles_in_content_dir/{r /home/odroid/ra_save_dir.txt' -e 'd}' /home/odroid/.config/retroarch32/retroarch.cfg > /home/odroid/retroarch32.cfg
-sudo mv /home/odroid/retroarch64.cfg /home/odroid/.config/retroarch/retroarch.cfg
-sudo mv /home/odroid/retroarch32.cfg /home/odroid/.config/retroarch32/retroarch.cfg
-sudo rm /home/odroid/ra_save_dir.txt
-sudo sed -e '/savestates_in_content_dir/{r /home/odroid/ra_savestate_dir.txt' -e 'd}' /home/odroid/.config/retroarch/retroarch.cfg > /home/odroid/retroarch64.cfg
-sudo sed -e '/savestates_in_content_dir/{r /home/odroid/ra_savestate_dir.txt' -e 'd}' /home/odroid/.config/retroarch32/retroarch.cfg > /home/odroid/retroarch32.cfg
-sudo mv /home/odroid/retroarch64.cfg /home/odroid/.config/retroarch/retroarch.cfg
-sudo mv /home/odroid/retroarch32.cfg /home/odroid/.config/retroarch32/retroarch.cfg
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/ra_save_dir.txt -P /home/odroid/ | tee -a "$LOG_FILE"
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/ra_savestate_dir.txt -P /home/odroid/ | tee -a "$LOG_FILE"
+sed -e '/savefiles_in_content_dir/{r /home/odroid/ra_save_dir.txt' -e 'd}' /home/odroid/.config/retroarch/retroarch.cfg > /home/odroid/retroarch64.cfg
+sed -e '/savefiles_in_content_dir/{r /home/odroid/ra_save_dir.txt' -e 'd}' /home/odroid/.config/retroarch32/retroarch.cfg > /home/odroid/retroarch32.cfg
+mv /home/odroid/retroarch64.cfg /home/odroid/.config/retroarch/retroarch.cfg
+mv /home/odroid/retroarch32.cfg /home/odroid/.config/retroarch32/retroarch.cfg
+rm /home/odroid/ra_save_dir.txt
+sed -e '/savestates_in_content_dir/{r /home/odroid/ra_savestate_dir.txt' -e 'd}' /home/odroid/.config/retroarch/retroarch.cfg > /home/odroid/retroarch64.cfg
+sed -e '/savestates_in_content_dir/{r /home/odroid/ra_savestate_dir.txt' -e 'd}' /home/odroid/.config/retroarch32/retroarch.cfg > /home/odroid/retroarch32.cfg
+mv /home/odroid/retroarch64.cfg /home/odroid/.config/retroarch/retroarch.cfg
+mv /home/odroid/retroarch32.cfg /home/odroid/.config/retroarch32/retroarch.cfg
 sudo rm /home/odroid/ra_savestate_dir.txt
 sudo apt -y install libqt5gui5 libv4l-dev | tee -a "$LOG_FILE"
 sudo chmod 777 /opt/retroarch/bin/retroarch
 sudo chmod 777 /opt/retroarch/bin/retroarch32
+sudo chmod 777 /home/odroid/.config/retroarch/retroarch.cfg
+sudo chmod 777 /home/odroid/.config/retroarch/retroarch32.cfg
 
 if [ -d "/roms/quake" ]; then
   printf "\nMoving Quake and Pico-8 into /roms/ports folder and ports menu for consolidation purposes...\n" | tee -a "$LOG_FILE"
-  sudo cp /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.update1.bak
-  sudo sed -i '/Pico8/,+8d' /etc/emulationstation/es_systems.cfg
-  sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es_ports_entry.txt -O /home/odroid/es_ports_entry.txt | tee -a "$LOG_FILE"
-  sudo sed -e '/Quake/,+5d' -e '/quake/{r /home/odroid/es_ports_entry.txt' -e 'd}' /etc/emulationstation/es_systems.cfg > /home/odroid/es_systems_temp.cfg
-  sudo mv -f /home/odroid/es_systems_temp.cfg /etc/emulationstation/es_systems.cfg
+  cp /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.update1.bak
+  sed -i '/Pico8/,+8d' /etc/emulationstation/es_systems.cfg
+  wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es_ports_entry.txt -O /home/odroid/es_ports_entry.txt | tee -a "$LOG_FILE"
+  sed -e '/Quake/,+5d' -e '/quake/{r /home/odroid/es_ports_entry.txt' -e 'd}' /etc/emulationstation/es_systems.cfg > /home/odroid/es_systems_temp.cfg
+  mv -f /home/odroid/es_systems_temp.cfg /etc/emulationstation/es_systems.cfg
   sudo rm /home/odroid/es_ports_entry.txt
   sudo mkdir /roms/ports
   sudo mkdir /roms/ports/pico-8
@@ -181,10 +183,10 @@ sudo chmod 777 /opt/system/"Enable Remote Services.sh"
 sudo chmod 777 /opt/system/"Disable Remote Services.sh"
 
 printf "\nUpdate emulationstation config to default screen timeout to black...\n" | tee -a "$LOG_FILE"
-sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es_setting_change.txt -O /home/odroid/es_setting_change.txt | tee -a "$LOG_FILE"
-sudo sed -e '/ScreenSaverBehavior/{r /home/odroid/es_setting_change.txt' -e 'd}' /home/odroid/.emulationstation/es_settings.cfg > /home/odroid/newes_settings.cfg
-sudo mv -f /home/odroid/newes_settings.cfg /home/odroid/.emulationstation/es_settings.cfg
-sudo rm /home/odroid/es_setting_change.txt
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es_setting_change.txt -O /home/odroid/es_setting_change.txt | tee -a "$LOG_FILE"
+sed -e '/ScreenSaverBehavior/{r /home/odroid/es_setting_change.txt' -e 'd}' /home/odroid/.emulationstation/es_settings.cfg > /home/odroid/newes_settings.cfg
+mv -f /home/odroid/newes_settings.cfg /home/odroid/.emulationstation/es_settings.cfg
+rm /home/odroid/es_setting_change.txt
 sudo service emulationstation start
 
 printf "\nChange hostname from goadvance to rk2020....\n" | tee -a "$LOG_FILE"
