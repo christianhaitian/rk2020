@@ -79,7 +79,16 @@ else
   sudo service cron reload | tee -a "$LOG_FILE"
 fi
 
-printf "\nDownloading and copying es-theme-freeplay theme to the emulationstation themes folder...\n"  | tee -a "$LOG_FILE"
+SUPERRETROOGA="/etc/emulationstation/themes/es-theme-super-retro-oga/"
+if [ -d "$SUPERRETROOGA" ]; then
+   printf "\nLooks like the Super Retro OGA theme already exist...\n" | tee -a "$LOG_FILE"
+else 
+   printf "\nDownloading and copying es-theme-super-retro-oga theme to the emulationstation themes folder...\n" | tee -a "$LOG_FILE"
+   sudo mkdir /etc/emulationstation/themes/es-theme-super-retro-oga/
+   sudo git clone https://github.com/tiduscrying/es-theme-super-retro-oga.git /etc/emulationstation/themes/es-theme-super-retro-oga/.
+fi
+
+printf "\nDownloading and copying es-theme-freeplay theme to the emulationstation themes folder...\n" | tee -a "$LOG_FILE"
 wget -nc https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es-theme-freeplay.tar | tee -a "$LOG_FILE"
 sudo tar -xf es-theme-freeplay.tar -C /etc/emulationstation/themes/ | tee -a "$LOG_FILE"
 sudo rm es-theme-freeplay.tar | tee -a "$LOG_FILE"
