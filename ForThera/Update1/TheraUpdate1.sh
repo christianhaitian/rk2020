@@ -84,7 +84,7 @@ if [ -d "$SUPERRETROOGA" ]; then
    printf "\nLooks like the Super Retro OGA theme already exist...\n" | tee -a "$LOG_FILE"
 else 
    printf "\nDownloading and copying es-theme-super-retro-oga theme to the emulationstation themes folder...\n" | tee -a "$LOG_FILE"
-   sudo mkdir /etc/emulationstation/themes/es-theme-super-retro-oga/
+   mkdir /etc/emulationstation/themes/es-theme-super-retro-oga/
    git clone https://github.com/tiduscrying/es-theme-super-retro-oga.git /etc/emulationstation/themes/es-theme-super-retro-oga/.
 fi
 
@@ -94,11 +94,11 @@ tar -xf es-theme-freeplay.tar -C /etc/emulationstation/themes/ | tee -a "$LOG_FI
 sudo rm es-theme-freeplay.tar | tee -a "$LOG_FILE"
 
 printf "\nChange Atomiswave from retrorun to using the retroarch 64 bit flycast libretro emulator core instead...\n" | tee -a "$LOG_FILE"
-sudo cp /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.update1.bak
+cp /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.update1.bak
 sed -i 's+retrorun32 -s ~ -d /opt/libretro/flycast /opt/libretro/flycast/flycast_libretro.so+/usr/local/bin/retroarch -L /home/odroid/.config/retroarch/cores/flycast_libretro.so+g' /etc/emulationstation/es_systems.cfg
 
 printf "\nDownloading and copying updated PPSSPPSDL...\n" | tee -a "$LOG_FILE"
-sudo mv /opt/ppsspp/PPSSPPSDL /opt/ppsspp/PPSSPPSDL.update1.bak
+mv /opt/ppsspp/PPSSPPSDL /opt/ppsspp/PPSSPPSDL.update1.bak
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/ppsspp/PPSSPPSDL -P /opt/ppsspp/ | tee -a "$LOG_FILE"
 sudo chmod 777 /opt/ppsspp/PPSSPPSDL
 
@@ -167,18 +167,18 @@ printf "\nMake sure nmbd service is disabled on boot to minimize on unnecessary 
 sudo systemctl disable nmbd
 
 printf "\nAdd Fix NTFS ability to options menu if ever needed...\n" | tee -a "$LOG_FILE"
-sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/system/Fix%20NTFS%20Partition.sh -O /opt/system/"Fix NTFS Partition.sh" | tee -a "$LOG_FILE"
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/system/Fix%20NTFS%20Partition.sh -O /opt/system/"Fix NTFS Partition.sh" | tee -a "$LOG_FILE"
 sudo chmod 777 /opt/system/"Fix NTFS Partition.sh"
 
 printf "\nAdd Genuine check ability to options menu...\n" | tee -a "$LOG_FILE"
-sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/system/RK2020%20Genuine%20Check.sh -O /opt/system/"RK2020 Genuine Check.sh" | tee -a "$LOG_FILE"
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/system/RK2020%20Genuine%20Check.sh -O /opt/system/"RK2020 Genuine Check.sh" | tee -a "$LOG_FILE"
 sudo chmod 775 /opt/system/"RK2020 Genuine Check.sh"
 
 printf "\nSecure samba with odroid login credentials and update remote services scripts...\n" | tee -a "$LOG_FILE"
 echo -e "odroid\nodroid" | sudo smbpasswd -s -a odroid  | tee -a "$LOG_FILE"
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/samba/smb.conf -O /etc/samba/smb.conf | tee -a "$LOG_FILE"
-sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/system/Disable%20Remote%20Services.sh -O /opt/system/"Disable Remote Services.sh" | tee -a "$LOG_FILE"
-sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/system/Enable%20Remote%20Services.sh -O /opt/system/"Enable Remote Services.sh" | tee -a "$LOG_FILE"
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/system/Disable%20Remote%20Services.sh -O /opt/system/"Disable Remote Services.sh" | tee -a "$LOG_FILE"
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/system/Enable%20Remote%20Services.sh -O /opt/system/"Enable Remote Services.sh" | tee -a "$LOG_FILE"
 sudo chmod 777 /opt/system/"Enable Remote Services.sh"
 sudo chmod 777 /opt/system/"Disable Remote Services.sh"
 
