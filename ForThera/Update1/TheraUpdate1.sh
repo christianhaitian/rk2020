@@ -22,6 +22,7 @@ else
   printf "\n\e[91mEither your internet connection is down, unstable, or github is not responding right now.\n" | tee -a "$LOG_FILE"
   printf "Fix your internet or check back later.\n\n\e[39m" | tee -a "$LOG_FILE"
   sleep 5
+  rm -- "$0"
   exit 1
 fi
 
