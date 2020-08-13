@@ -138,7 +138,7 @@ sudo apt -y install libqt5gui5 libv4l-dev | tee -a "$LOG_FILE"
 sudo chmod 777 /opt/retroarch/bin/retroarch
 sudo chmod 777 /opt/retroarch/bin/retroarch32
 sudo chmod 777 /home/odroid/.config/retroarch/retroarch.cfg
-sudo chmod 777 /home/odroid/.config/retroarch/retroarch32.cfg
+sudo chmod 777 /home/odroid/.config/retroarch32/retroarch.cfg
 
 if [ -d "/roms/quake" ]; then
   printf "\nMoving Quake and Pico-8 into /roms/ports folder and ports menu for consolidation purposes...\n" | tee -a "$LOG_FILE"
