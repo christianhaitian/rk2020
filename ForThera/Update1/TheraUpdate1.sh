@@ -188,6 +188,7 @@ wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update1/es_s
 sed -e '/ScreenSaverBehavior/{r /home/odroid/es_setting_change.txt' -e 'd}' /home/odroid/.emulationstation/es_settings.cfg > /home/odroid/newes_settings.cfg
 mv -f /home/odroid/newes_settings.cfg /home/odroid/.emulationstation/es_settings.cfg
 rm /home/odroid/es_setting_change.txt
+sudo chmod 777 /home/odroid/.emulationstation/es_settings.cfg
 sudo service emulationstation start
 
 printf "\nChange hostname from goadvance to rk2020....\n" | tee -a "$LOG_FILE"
