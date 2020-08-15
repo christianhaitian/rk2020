@@ -42,6 +42,7 @@ if [[ $k = u ]] ; then
 else
   printf "\n\e[93mExiting the program...\n\n\e[39m" | tee -a "$LOG_FILE"
   sleep 3
+  rm -- "$0"
   exit 1
 fi
 
