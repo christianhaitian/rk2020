@@ -1,0 +1,1 @@
+menu_widget_scale_factor = "2.500000"
