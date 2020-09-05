@@ -71,11 +71,13 @@ printf "\nBackup existing emulationstation systems config and download updated c
 cp /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.update3.bak
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/etc/emulationstation/es_systems.cfg -O /etc/emulationstation/es_systems.cfg | tee -a "$LOG_FILE"
 
-printf "\nDownloading and copying updated retroarch 1.9.0 executables...\n" | tee -a "$LOG_FILE"
+printf "\nDownloading and copying updated retroarch 1.9.0 executables and setting permissions...\n" | tee -a "$LOG_FILE"
 mv /opt/retroarch/bin/retroarch /opt/retroarch/bin/retroarch.update3.bak
 mv /opt/retroarch/bin/retroarch32 /opt/retroarch/bin/retroarch32.update3.bak
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/retroarch/retroarch -P /opt/retroarch/bin/ | tee -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/retroarch/retroarch32 -P /opt/retroarch/bin/ | tee -a "$LOG_FILE"
+sudo chmod 777 /opt/retroarch/bin/retroarch
+sudo chmod 777 /opt/retroarch/bin/retroarch32
 
 printf "\nFix retroarch display notification size and related file permissions...\n" | tee -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/menu_widget_scale.txt -P /home/odroid/ | tee -a "$LOG_FILE"
@@ -84,8 +86,6 @@ sed -e '/menu_widget_scale_factor/{r /home/odroid/menu_widget_scale.txt' -e 'd}'
 mv /home/odroid/retroarch64.cfg /home/odroid/.config/retroarch/retroarch.cfg
 mv /home/odroid/retroarch32.cfg /home/odroid/.config/retroarch32/retroarch.cfg
 sudo rm /home/odroid/menu_widget_scale.txt.txt
-sudo chmod 777 /opt/retroarch/bin/retroarch
-sudo chmod 777 /opt/retroarch/bin/retroarch32
 sudo chmod 777 /home/odroid/.config/retroarch/retroarch.cfg
 sudo chmod 777 /home/odroid/.config/retroarch32/retroarch.cfg
 
