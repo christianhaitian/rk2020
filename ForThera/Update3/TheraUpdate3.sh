@@ -90,8 +90,8 @@ sudo chmod 777 /home/odroid/.config/retroarch/retroarch.cfg
 sudo chmod 777 /home/odroid/.config/retroarch32/retroarch.cfg
 
 printf "\nAdd logging start and stop to options menu...\n" | tee -a "$LOG_FILE"
-wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/opt/"Start Logging Services".sh -O /opt/system/"Start Logging Services.sh" | tee -a "$LOG_FILE"
-wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/opt/"Stop Logging Services".sh -O /opt/system/"Stop Logging Services.sh" | tee -a "$LOG_FILE"
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/opt/Start%20Logging%20Services.sh -O /opt/system/"Start Logging Services.sh" | tee -a "$LOG_FILE"
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/opt/Stop%20Logging%20Services.sh -O /opt/system/"Stop Logging Services.sh" | tee -a "$LOG_FILE"
 sudo chmod 777 /opt/system/"Stop Logging Services.sh"
 sudo chmod 777 /opt/system/"Start Logging Services.sh"
 
