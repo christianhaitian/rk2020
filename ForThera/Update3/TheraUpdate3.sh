@@ -55,21 +55,22 @@ sudo systemctl disable ModemManager.service | tee -a "$LOG_FILE"
 sudo systemctl disable polkit.service | tee -a "$LOG_FILE"
 printf "\nNow that that's done, let's move on with the rest of the updates...\n" | tee -a "$LOG_FILE"
 
-printf "\nDownloading and copying daphne and fuse cores to retroarch 64 bit...\n" | tee -a "$LOG_FILE"
-wget http://eple.us/retroroller/libretro/aarch64/daphne_libretro.so.zip | tee -a "$LOG_FILE"
+printf "\nDownloading and copying fuse core to retroarch 64 bit...\n" | tee -a "$LOG_FILE"
 wget http://eple.us/retroroller/libretro/aarch64/fuse_libretro.so.zip | tee -a "$LOG_FILE"
-tar -C /home/odroid/.config/retroarch/cores -zxvf daphne_libretro.so.zip | tee -a "$LOG_FILE"
 tar -C /home/odroid/.config/retroarch/cores -zxvf fuse_libretro.so.zip | tee -a "$LOG_FILE"
-rm daphne_libretro.so.zip | tee -a "$LOG_FILE"
 rm fuse_libretro.so.zip | tee -a "$LOG_FILE"
 
-printf "\nCreate Daphne and ZX Spectrum rom folders...\n" | tee -a "$LOG_FILE"
-sudo mkdir /roms/daphne
+printf "\nCreate ZX Spectrum rom folders...\n" | tee -a "$LOG_FILE"
 sudo mkdir /roms/zxspectrum
+mkdir /home/odroid/.config/retroarch/config/remaps/fuse
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/retroarch/fuse/fuse.rmp -O /home/odroid/.config/retroarch/config/remaps/fuse/fuse.rmp | tee -a "$LOG_FILE"
 
-printf "\nBackup existing emulationstation systems config and download updated config for Daphne and ZX Spectrum inclusion...\n" | tee -a "$LOG_FILE"
+printf "\nBackup existing emulationstation systems config and download updated config for ZX Spectrum inclusion...\n" | tee -a "$LOG_FILE"
+sudo chown odroid:odroid /etc/emulationstation/es_systems.cfg
 cp /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.update3.bak
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/etc/emulationstation/es_systems.cfg -O /etc/emulationstation/es_systems.cfg | tee -a "$LOG_FILE"
+sudo chown odroid:odroid /etc/emulationstation/es_systems.cfg
+sudo chmod 777 /etc/emulationstation/es_systems.cfg
 
 printf "\nDownloading and copying updated retroarch 1.9.0 executables and setting permissions...\n" | tee -a "$LOG_FILE"
 mv /opt/retroarch/bin/retroarch /opt/retroarch/bin/retroarch.update3.bak
