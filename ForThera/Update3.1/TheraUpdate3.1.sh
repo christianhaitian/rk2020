@@ -116,6 +116,8 @@ sudo rm -v es-theme-theRA_NTFS-carbon.zip | tee -a "$LOG_FILE"
 sudo chown -v odroid:odroid -R /etc/emulationstation/ | tee -a "$LOG_FILE"
 sudo systemctl start emulationstation
 
+printf "\nDownloading and copying new logos to /boot/BMPs...\n" | tee -a "$LOG_FILE"
+sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/boot/BMPs/logoRL.bmp -O /boot/BMPs/logoRL.bmp | tee -a "$LOG_FILE"
 
 
 
