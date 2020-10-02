@@ -102,7 +102,7 @@ sudo chown odroid:odroid /home/odroid/.config/retroarch/cores/duckstation_libret
 sudo chmod -v 777 /home/odroid/.config/retroarch/cores/px68k_libretro.so | tee -a "$LOG_FILE"
 sudo chown -v odroid:odroid /home/odroid/.config/retroarch/cores/px68k_libretro.so | tee -a "$LOG_FILE"
 sudo rm -v neocd_libretro.so.zip | tee -a "$LOG_FILE"
-sudo rm -v duckstation.so.zip | tee -a "$LOG_FILE"
+sudo rm -v duckstation_libretro.so.zip | tee -a "$LOG_FILE"
 sudo rm -v px68k_libretro.so.zip | tee -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/Freeplay9-30-v1.zip -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/Switch9-29-20-v4.zip -a "$LOG_FILE"
@@ -119,97 +119,10 @@ sudo systemctl start emulationstation
 printf "\nDownloading and copying new logos to /boot/BMPs...\n" | tee -a "$LOG_FILE"
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/boot/BMPs/logoRL.bmp -O /boot/BMPs/logoRL.bmp | tee -a "$LOG_FILE"
 
-
-
-
 printf "\nLast but not least, let's ensure that Drastic performance has not been negatively impacted by these updates...\n" | tee -a "$LOG_FILE"
 sudo ln -sfv /usr/lib/arm-linux-gnueabihf/libSDL2-2.0.so.0.10.0 /usr/lib/arm-linux-gnueabihf/libSDL2-2.0.so.0 | tee -a "$LOG_FILE"
 
-
-
-
-
-
-
-
-
-
-rm -v fuse_libretro.so.zip | tee -a "$LOG_FILE"
-rm -v fmsx_libretro.so.zip | tee -a "$LOG_FILE"
-
-printf "\nCreate ZX Spectrum rom folders and copy remap files for fuse and fmsx...\n" | tee -a "$LOG_FILE"
-mkdir -v /roms/zxspectrum | tee -a "$LOG_FILE"
-mkdir -v /home/odroid/.config/retroarch/config/remaps/fuse | tee -a "$LOG_FILE"
-mkdir -v /home/odroid/.config/retroarch/config/remaps/fMSX | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /home/odroid/.config/retroarch/config/remaps/fuse | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /home/odroid/.config/retroarch/config/remaps/fMSX | tee -a "$LOG_FILE"
-wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/retroarch/fuse/fuse.rmp -O /home/odroid/.config/retroarch/config/remaps/fuse/fuse.rmp | tee -a "$LOG_FILE"
-wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/retroarch/fMSX/fMSX.rmp -O /home/odroid/.config/retroarch/config/remaps/fMSX/fMSX.rmp | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /home/odroid/.config/retroarch/config/remaps/fuse/fuse.rmp | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /home/odroid/.config/retroarch/config/remaps/fMSX/fMSX.rmp | tee -a "$LOG_FILE"
-
-printf "\nBackup existing emulationstation systems config and download updated config for ZX Spectrum inclusion...\n" | tee -a "$LOG_FILE"
-cp -v /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.update3.bak | tee -a "$LOG_FILE"
-wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/etc/emulationstation/es_systems.cfg -O /etc/emulationstation/es_systems.cfg | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /etc/emulationstation/es_systems.cfg | tee -a "$LOG_FILE"
-sudo chmod -v 777 /etc/emulationstation/es_systems.cfg | tee -a "$LOG_FILE"
-
-printf "\nDownloading and copying updated retroarch 1.9.0 executables and setting permissions...\n" | tee -a "$LOG_FILE"
-mv -v /opt/retroarch/bin/retroarch /opt/retroarch/bin/retroarch.update3.bak | tee -a "$LOG_FILE"
-mv -v /opt/retroarch/bin/retroarch32 /opt/retroarch/bin/retroarch32.update3.bak | tee -a "$LOG_FILE"
-wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/retroarch/retroarch -P /opt/retroarch/bin/ | tee -a "$LOG_FILE"
-wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/retroarch/retroarch32 -P /opt/retroarch/bin/ | tee -a "$LOG_FILE"
-sudo chmod -v 777 /opt/retroarch/bin/retroarch | tee -a "$LOG_FILE"
-sudo chmod -v 777 /opt/retroarch/bin/retroarch32 | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /opt/retroarch/bin/retroarch | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /opt/retroarch/bin/retroarch32 | tee -a "$LOG_FILE"
-
-printf "\nFix retroarch display notification size and related file permissions...\n" | tee -a "$LOG_FILE"
-wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/menu_widget_scale.txt -P /home/odroid/ | tee -a "$LOG_FILE"
-sed -e '/menu_widget_scale_factor/{r /home/odroid/menu_widget_scale.txt' -e 'd}' /home/odroid/.config/retroarch/retroarch.cfg > /home/odroid/retroarch64.cfg
-sed -e '/menu_widget_scale_factor/{r /home/odroid/menu_widget_scale.txt' -e 'd}' /home/odroid/.config/retroarch32/retroarch.cfg > /home/odroid/retroarch32.cfg
-mv -v /home/odroid/retroarch64.cfg /home/odroid/.config/retroarch/retroarch.cfg | tee -a "$LOG_FILE"
-mv -v /home/odroid/retroarch32.cfg /home/odroid/.config/retroarch32/retroarch.cfg | tee -a "$LOG_FILE"
-sudo rm -v /home/odroid/menu_widget_scale.txt | tee -a "$LOG_FILE"
-sudo chmod -v 777 /home/odroid/.config/retroarch/retroarch.cfg | tee -a "$LOG_FILE"
-sudo chmod -v 777 /home/odroid/.config/retroarch32/retroarch.cfg | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /home/odroid/.config/retroarch/retroarch.cfg | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /home/odroid/.config/retroarch32/retroarch.cfg | tee -a "$LOG_FILE"
-
-printf "\nMove location of PPSSPP saves to roms psp folder...\n" | tee -a "$LOG_FILE"
-cp -rfv /home/odroid/.config/ppsspp/ /roms/psp | tee -a "$LOG_FILE"
-rm -rfv /home/odroid/.config/ppsspp/ | tee -a "$LOG_FILE"
-ln -sv /roms/psp/ppsspp/ /home/odroid/.config/ | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /home/odroid/.config/ppsspp/ | tee -a "$LOG_FILE"
-
-printf "\nMove location of Drastic saves to roms nds folder...\n" | tee -a "$LOG_FILE"
-cp -rfv /opt/drastic/cheats/ /roms/nds | tee -a "$LOG_FILE"
-cp -rfv /opt/drastic/backup/ /roms/nds | tee -a "$LOG_FILE"
-cp -rfv /opt/drastic/savestates/ /roms/nds | tee -a "$LOG_FILE"
-cp -rfv /opt/drastic/slot2/ /roms/nds | tee -a "$LOG_FILE"
-rm -rfv /opt/drastic/cheats/ | tee -a "$LOG_FILE"
-rm -rfv /opt/drastic/backup/ | tee -a "$LOG_FILE"
-rm -rfv /opt/drastic/savestates/ | tee -a "$LOG_FILE"
-rm -rfv /opt/drastic/slot2/ | tee -a "$LOG_FILE"
-ln -sv /roms/nds/backup/ /opt/drastic/ | tee -a "$LOG_FILE"
-ln -sv /roms/nds/savestates/ /opt/drastic/ | tee -a "$LOG_FILE"
-ln -sv /roms/nds/cheats/ /opt/drastic/ | tee -a "$LOG_FILE"
-ln -sv /roms/nds/slot2/ /opt/drastic/ | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /opt/drastic/backup/ | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /opt/drastic/savestates/ | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /opt/drastic/cheats/ | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /opt/drastic/slot2/ | tee -a "$LOG_FILE"
-
-printf "\nAdd logging start and stop to options menu...\n" | tee -a "$LOG_FILE"
-wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/opt/Start%20Logging%20Services.sh -O /opt/system/"Start Logging Services.sh" | tee -a "$LOG_FILE"
-wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3/opt/Stop%20Logging%20Services.sh -O /opt/system/"Stop Logging Services.sh" | tee -a "$LOG_FILE"
-sudo chmod -v 777 /opt/system/"Stop Logging Services.sh" | tee -a "$LOG_FILE"
-sudo chmod -v 777 /opt/system/"Start Logging Services.sh" | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /opt/system/"Stop Logging Services.sh" | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /opt/system/"Start Logging Services.sh" | tee -a "$LOG_FILE"
-
 printf "\nVoila! All Done.  You're distro has now been successfully upgraded to TheRA-NTFS version 3\n\n\e[39m" | tee -a "$LOG_FILE"
-
 rm -v -- "$0" | tee -a "$LOG_FILE"
 exit 0
 done
