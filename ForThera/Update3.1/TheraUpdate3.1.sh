@@ -69,15 +69,14 @@ mv -v /home/odroid/.config/retroarch32/retroarch.cfg /home/odroid/.config/retroa
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/retroarch/retroarch-core-options.cfg -O /home/odroid/.config/retroarch/retroarch-core-options.cfg -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/retroarch32/retroarch-core-options.cfg -O /home/odroid/.config/retroarch32/retroarch-core-options.cfg -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/retroarch32/retroarch.cfg -O /home/odroid/.config/retroarch32/retroarch.cfg -a "$LOG_FILE"
-wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/retroarch32/config/ParaLLEl%20N64/ParaLLEl%20N64.rmp -O /home/odroid/.config/retroarch32/config/remaps/ParaLLEl%20N64/ParaLLEl%20N64.rmp -a "$LOG_FILE"
+wget -N https://github.com/christianhaitian/rgb10/raw/master/ForThera/retroarch32/config/ParaLLEl%20N64/ParaLLEl%20N64.rmp -P "/home/odroid/.config/retroarch32/config/remaps/ParaLLEl N64" -a "$LOG_FILE"
 sudo chown -v odroid:odroid /home/odroid/.config/retroarch/retroarch-core-options.cfg | tee -a "$LOG_FILE"
 sudo chown -v odroid:odroid /home/odroid/.config/retroarch32/retroarch-core-options.cfg | tee -a "$LOG_FILE"
 sudo chown -v odroid:odroid /home/odroid/.config/retroarch32/retroarch.cfg | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /home/odroid/.config/retroarch32/config/remaps/ParaLLEl%20N64/ParaLLEl%20N64.rmp -a "$LOG_FILE"
+sudo chown -v odroid:odroid -R /home/odroid/.config/retroarch32/config/remaps/ -a "$LOG_FILE"
 sudo chmod -v 777 /home/odroid/.config/retroarch/retroarch-core-options.cfg | tee -a "$LOG_FILE"
 sudo chmod -v 777 /home/odroid/.config/retroarch32/retroarch-core-options.cfg | tee -a "$LOG_FILE"
 sudo chmod -v 777 /home/odroid/.config/retroarch32/retroarch.cfg | tee -a "$LOG_FILE"
-sudo chmod -v 777 /home/odroid/.config/retroarch32/config/remaps/ParaLLEl%20N64/ParaLLEl%20N64.rmp -a "$LOG_FILE"
 
 printf "\nDownload and install updated Emulationstation...\n" | tee -a "$LOG_FILE"
 sudo systemctl stop emulationstation
