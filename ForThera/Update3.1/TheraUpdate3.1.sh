@@ -130,6 +130,13 @@ sudo systemctl start emulationstation
 printf "\nDownloading and copying new logos to /boot/BMPs...\n" | tee -a "$LOG_FILE"
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/boot/BMPs/logoRL.bmp -O /boot/BMPs/logoRL.bmp | tee -a "$LOG_FILE"
 
+printf "\nFix Genuine check menu option...\n" | tee -a "$LOG_FILE"
+sudo rm -v /opt/system/"RK2020 Genuine Check.sh" | tee -a "$LOG_FILE"
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/system/RK2020%20Genuine%20Check.sh -O /opt/system/"RK2020 Genuine Check.sh" | tee -a "$LOG_FILE"
+sudo chmod 775 /opt/system/"RK2020 Genuine Check.sh"
+sudo chown odroid:odroid /opt/system/"RK2020 Genuine Check.sh"
+
+
 printf "\nLast but not least, let's ensure that Drastic performance has not been negatively impacted by these updates...\n" | tee -a "$LOG_FILE"
 sudo ln -sfv /usr/lib/arm-linux-gnueabihf/libSDL2-2.0.so.0.10.0 /usr/lib/arm-linux-gnueabihf/libSDL2-2.0.so.0 | tee -a "$LOG_FILE"
 
