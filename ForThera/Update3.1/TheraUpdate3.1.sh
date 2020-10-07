@@ -58,10 +58,6 @@ wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/opt/Update.s
 sudo chown -v odroid:odroid /opt/system/Update.sh | tee -a "$LOG_FILE"
 sudo chmod -v 777 /opt/system/Update.sh | tee -a "$LOG_FILE"
 
-printf "\nDownloading and installing updated dtb files to allow lower cpu downclocks and fix original OGA 1.0 booting ...\n" | tee -a "$LOG_FILE"
-sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/boot/rk3326-odroidgo2-linux.dtb -O /boot/rk3326-odroidgo2-linux.dtb -a "$LOG_FILE"
-sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/boot/rk3326-odroidgo2-linux-v11.dtb -O /boot/rk3326-odroidgo2-linux-v11.dtb -a "$LOG_FILE"
-
 printf "\nFix analog stick not responding in N64 games and Mame2003 with no control ...\n" | tee -a "$LOG_FILE"
 mv -v /home/odroid/.config/retroarch/retroarch-core-options.cfg /home/odroid/.config/retroarch/retroarch-core-options.cfg.update$UPDATE_VER.bak | tee -a "$LOG_FILE"
 mv -v /home/odroid/.config/retroarch32/retroarch-core-options.cfg /home/odroid/.config/retroarch32/retroarch-core-options.cfg.update$UPDATE_VER.bak | tee -a "$LOG_FILE"
