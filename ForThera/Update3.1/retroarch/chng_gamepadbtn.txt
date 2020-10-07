@@ -1,0 +1,1 @@
+input_menu_toggle_gamepad_combo = "3"

@@ -49,6 +49,26 @@ else
   exit 1
 fi
 
+printf "\nWorkaround for occassional retroarch hotkey issue and related file permissions...\n" | tee -a "$LOG_FILE"
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/retroarch/chng_gamepadbtn.txt -O /home/odroid/chng_gamepadbtn.txt
+if [ $? -eq 0 ]; then
+  sed -e '/input_exit_emulator_btn/{r /home/odroid/chng_gamepadbtn.txt' -e 'd}' /home/odroid/.config/retroarch/retroarch.cfg > /home/odroid/retroarch64.cfg
+  sed -e '/input_exit_emulator_btn/{r /home/odroid/chng_gamepadbtn.txt' -e 'd}' /home/odroid/.config/retroarch32/retroarch.cfg > /home/odroid/retroarch32.cfg
+  mv /home/odroid/.config/retroarch/retroarch.cfg /home/odroid/.config/retroarch/retroarch.update$UPDATE_VER.bak
+  mv /home/odroid/.config/retroarch32/retroarch.cfg /home/odroid/.config/retroarch32/retroarch.update$UPDATE_VER.bak
+  mv -v /home/odroid/retroarch64.cfg /home/odroid/.config/retroarch/retroarch.cfg | tee -a "$LOG_FILE"
+  mv -v /home/odroid/retroarch32.cfg /home/odroid/.config/retroarch32/retroarch.cfg | tee -a "$LOG_FILE"
+  sudo rm -v /home/odroid/chng_gamepadbtn.txt | tee -a "$LOG_FILE"
+  sudo chmod -v 777 /home/odroid/.config/retroarch/retroarch.cfg | tee -a "$LOG_FILE"
+  sudo chmod -v 777 /home/odroid/.config/retroarch32/retroarch.cfg | tee -a "$LOG_FILE"
+  sudo chown -v odroid:odroid /home/odroid/.config/retroarch/retroarch.cfg | tee -a "$LOG_FILE"
+  sudo chown -v odroid:odroid /home/odroid/.config/retroarch32/retroarch.cfg | tee -a "$LOG_FILE"
+else
+  printf "Can't download necessary github file.  Check your internet connection and try again." | tee -a "$LOG_FILE"
+  rm -- "$0"
+  exit 1
+fi
+
 printf "\nInstalling the base vlc files to allow video snaps to play in emulationstation...\n" | tee -a "$LOG_FILE"
 sudo apt update -y | tee -a "$LOG_FILE"
 sudo apt -y install vlc-plugin-base | tee -a "$LOG_FILE"
