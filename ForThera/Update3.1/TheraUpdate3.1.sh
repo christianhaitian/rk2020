@@ -135,14 +135,17 @@ wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/Fr
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/Switch.zip -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/es-theme-theRA_NTFS-carbon.zip -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/es-theme-super-retro-rk3326.zip -a "$LOG_FILE"
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/es-theme-gbz35-mod.zip -a "$LOG_FILE"
 sudo unzip -o Freeplay9-30-v1.zip -d /etc/emulationstation/themes/ | tee -a "$LOG_FILE"
 sudo unzip -o Switch9-29-20-v4.zip -d /etc/emulationstation/themes/ | tee -a "$LOG_FILE"
 sudo unzip -o es-theme-theRA_NTFS-carbon.zip -d /etc/emulationstation/themes/ | tee -a "$LOG_FILE"
 sudo unzip -o es-theme-super-retro-rk3326.zip -d /etc/emulationstation/themes/ | tee -a "$LOG_FILE"
+sudo unzip -o es-theme-gbz35-mod.zip -d /etc/emulationstation/themes/ | tee -a "$LOG_FILE"
 sudo rm -v Freeplay9-30-v1.zip | tee -a "$LOG_FILE"
 sudo rm -v Switch9-29-20-v4.zip | tee -a "$LOG_FILE"
 sudo rm -v es-theme-theRA_NTFS-carbon.zip | tee -a "$LOG_FILE"
 sudo rm -v es-theme-super-retro-rk3326.zip | tee -a "$LOG_FILE"
+sudo rm -v es-theme-gbz35-mod.zip | tee -a "$LOG_FILE"
 sudo chown -v odroid:odroid -R /etc/emulationstation/ | tee -a "$LOG_FILE"
 sudo systemctl start emulationstation
 
