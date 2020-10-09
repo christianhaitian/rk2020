@@ -6,7 +6,7 @@ testmem=$(echo $pretestmem | cut -c 45-52)
 
 msgbox "$testcpu      $testmem"
 
-if [[ $testcpu == *"Hardkernel ODROID-GO2"* ]] && [[ $testmem == *"894"* ]]; then
+if [[ $testcpu == *"Hardkernel ODROID-GO2"* ]] && [[ $testmem == *"89"* ]]; then
    msgbox "Looks like this is a genuine RK2020."
 else
    msgbox "This doesn't seem to be a genuine RK2020."

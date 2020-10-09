@@ -158,6 +158,9 @@ wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/sy
 sudo chmod 775 /opt/system/"RK2020 Genuine Check.sh"
 sudo chown odroid:odroid /opt/system/"RK2020 Genuine Check.sh"
 
+printf "\nFix Quake shortcut option...\n" | tee -a "$LOG_FILE"
+sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/ports/Quake.sh -O /roms/ports/Quake.sh | tee -a "$LOG_FILE"
+
 printf "\nAdd support for Cannonball, Cavestory, Doom and Doom2...\n" | tee -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/ports.zip -a "$LOG_FILE"
 sudo wget http://eple.us/retroroller/libretro/aarch64/prboom_libretro.so.zip -a "$LOG_FILE"
