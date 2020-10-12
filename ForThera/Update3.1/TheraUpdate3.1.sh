@@ -78,6 +78,17 @@ wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/opt/Update.s
 sudo chown -v odroid:odroid /opt/system/Update.sh | tee -a "$LOG_FILE"
 sudo chmod -v 777 /opt/system/Update.sh | tee -a "$LOG_FILE"
 
+printf "\nUpdated Rertroarch 1.9.0 with RGA Scaling...\n" | tee -a "$LOG_FILE"
+mv -v /opt/retroarch/bin/retroarch /opt/retroarch/bin/retroarch.update$UPDATE_DATE.bak | tee -a "$LOG_FILE"
+mv -v /opt/retroarch/bin/retroarch32 /opt/retroarch/bin/retroarch32.update$UPDATE_DATE.bak | tee -a "$LOG_FILE"
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/retroarch/retroarch -O /opt/retroarch/bin/retroarch -a "$LOG_FILE"
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/retroarch32/retroarch32 -O /opt/retroarch/bin/retroarch32 -a "$LOG_FILE"
+sudo chown -v odroid:odroid /opt/retroarch/bin/retroarch
+sudo chmod -v 777 /opt/retroarch/bin/retroarch
+sudo chown -v odroid:odroid /opt/retroarch/bin/retroarch32
+sudo chmod -v 777 /opt/retroarch/bin/retroarch32
+sudo ln -sfv /usr/lib/aarch64-linux-gnu/librga.so /usr/lib/aarch64-linux-gnu/librga.so.2
+
 printf "\nFix analog stick not responding in N64 games and Mame2003 with no control ...\n" | tee -a "$LOG_FILE"
 mv -v /home/odroid/.config/retroarch/retroarch-core-options.cfg /home/odroid/.config/retroarch/retroarch-core-options.cfg.update$UPDATE_VER.bak | tee -a "$LOG_FILE"
 mv -v /home/odroid/.config/retroarch32/retroarch-core-options.cfg /home/odroid/.config/retroarch32/retroarch-core-options.cfg.update$UPDATE_VER.bak | tee -a "$LOG_FILE"
