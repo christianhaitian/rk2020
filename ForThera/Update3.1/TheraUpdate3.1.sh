@@ -200,6 +200,7 @@ printf "\nLast but not least, let's ensure that Drastic performance has not been
 sudo ln -sfv /usr/lib/arm-linux-gnueabihf/libSDL2-2.0.so.0.10.0 /usr/lib/arm-linux-gnueabihf/libSDL2-2.0.so.0 | tee -a "$LOG_FILE"
 
 printf "\nVoila! All Done.  You're distro has now been successfully upgraded to TheRA-NTFS version 3.1.  System will now reboot so the kernel updates can take effect.\n\n\e[39m" | tee -a "$LOG_FILE"
+sleep 6
 rm -v -- "$0" | tee -a "$LOG_FILE"
 sudo reboot
 exit 0
