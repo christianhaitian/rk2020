@@ -1,1 +1,1 @@
-video_driver = "oga"
+video_driver = "gl"
