@@ -13,3 +13,4 @@ sudo chmod -v 777 /opt/retroarch/bin/retroarch
 sudo chown -v odroid:odroid /opt/retroarch/bin/retroarch32
 sudo chmod -v 777 /opt/retroarch/bin/retroarch32
 sudo ln -sfv /usr/lib/aarch64-linux-gnu/librga.so /usr/lib/aarch64-linux-gnu/librga.so.2
+rm -- "$0"
