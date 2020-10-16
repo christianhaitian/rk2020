@@ -181,7 +181,7 @@ sudo rm -v es-theme-gbz35-mod.zip | tee -a "$LOG_FILE"
 sudo rm -v dosirakF.zip | tee -a "$LOG_FILE"
 sudo rm -v es-theme-minimal.zip | tee -a "$LOG_FILE"
 sudo chown -v odroid:odroid ~/.asoundrc | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid -R /etc/emulationstation/ | tee -a "$LOG_FILE"
+sudo chown -v odroid:odroid -R /etc/emulationstation/
 sudo systemctl start emulationstation
 
 printf "\nDownloading and copying new logos to /boot/BMPs...\n" | tee -a "$LOG_FILE"
