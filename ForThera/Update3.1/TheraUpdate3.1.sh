@@ -50,12 +50,12 @@ else
 fi
 
 printf "\nWorkaround for occassional retroarch hotkey issue and related file permissions...\n" | tee -a "$LOG_FILE"
-wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/retroarch/chng_gamepadbtn.txt -O /home/odroid/chng_gamepadbtn.txt
+wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/retroarch/chng_gamepadbtn.txt -O /home/odroid/chng_gamepadbtn.txt -a "$LOG_FILE"
 if [ $? -eq 0 ]; then
   sed -e '/input_menu_toggle_gamepad_combo/{r /home/odroid/chng_gamepadbtn.txt' -e 'd}' /home/odroid/.config/retroarch/retroarch.cfg > /home/odroid/retroarch64.cfg
   sed -e '/input_menu_toggle_gamepad_combo/{r /home/odroid/chng_gamepadbtn.txt' -e 'd}' /home/odroid/.config/retroarch32/retroarch.cfg > /home/odroid/retroarch32.cfg
-  mv -v /home/odroid/.config/retroarch/retroarch.cfg /home/odroid/.config/retroarch/retroarch.update$UPDATE_VER.bak
-  mv -v /home/odroid/.config/retroarch32/retroarch.cfg /home/odroid/.config/retroarch32/retroarch.update$UPDATE_VER.bak
+  mv -v /home/odroid/.config/retroarch/retroarch.cfg /home/odroid/.config/retroarch/retroarch.update$UPDATE_VER.bak | tee -a "$LOG_FILE"
+  mv -v /home/odroid/.config/retroarch32/retroarch.cfg /home/odroid/.config/retroarch32/retroarch.update$UPDATE_VER.bak | tee -a "$LOG_FILE"
   mv -v /home/odroid/retroarch64.cfg /home/odroid/.config/retroarch/retroarch.cfg | tee -a "$LOG_FILE"
   mv -v /home/odroid/retroarch32.cfg /home/odroid/.config/retroarch32/retroarch.cfg | tee -a "$LOG_FILE"
   sudo rm -v /home/odroid/chng_gamepadbtn.txt | tee -a "$LOG_FILE"
@@ -190,8 +190,8 @@ sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3
 printf "\nFix Genuine check menu option...\n" | tee -a "$LOG_FILE"
 sudo rm -v /opt/system/"RK2020 Genuine Check.sh" | tee -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/system/RK2020%20Genuine%20Check.sh -O /opt/system/"RK2020 Genuine Check.sh" | tee -a "$LOG_FILE"
-sudo chmod 775 /opt/system/"RK2020 Genuine Check.sh"
-sudo chown odroid:odroid /opt/system/"RK2020 Genuine Check.sh"
+sudo chmod -V 775 /opt/system/"RK2020 Genuine Check.sh" | tee -a "$LOG_FILE"
+sudo chown -V odroid:odroid /opt/system/"RK2020 Genuine Check.sh" | tee -a "$LOG_FILE"
 
 printf "\nFix Quake shortcut option...\n" | tee -a "$LOG_FILE"
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/ports/Quake.sh -O /roms/ports/Quake.sh | tee -a "$LOG_FILE"
