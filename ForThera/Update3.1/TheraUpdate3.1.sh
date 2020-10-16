@@ -89,11 +89,11 @@ mv -v /home/odroid/retroarch64.cfg /home/odroid/.config/retroarch/retroarch.cfg 
 sudo rm -v /home/odroid/chng_viddrv.txt | tee -a "$LOG_FILE"
 sudo chmod -v 777 /home/odroid/.config/retroarch/retroarch.cfg | tee -a "$LOG_FILE"
 sudo chown -v odroid:odroid /home/odroid/.config/retroarch/retroarch.cfg | tee -a "$LOG_FILE"
-sudo chown -v odroid:odroid /opt/retroarch/bin/retroarch
-sudo chmod -v 777 /opt/retroarch/bin/retroarch
-sudo chown -v odroid:odroid /opt/retroarch/bin/retroarch32
-sudo chmod -v 777 /opt/retroarch/bin/retroarch32
-sudo ln -sfv /usr/lib/aarch64-linux-gnu/librga.so /usr/lib/aarch64-linux-gnu/librga.so.2
+sudo chown -v odroid:odroid /opt/retroarch/bin/retroarch | tee -a "$LOG_FILE"
+sudo chmod -v 777 /opt/retroarch/bin/retroarch | tee -a "$LOG_FILE"
+sudo chown -v odroid:odroid /opt/retroarch/bin/retroarch32 | tee -a "$LOG_FILE"
+sudo chmod -v 777 /opt/retroarch/bin/retroarch32 | tee -a "$LOG_FILE"
+sudo ln -sfv /usr/lib/aarch64-linux-gnu/librga.so /usr/lib/aarch64-linux-gnu/librga.so.2 | tee -a "$LOG_FILE"
 
 printf "\nFix analog stick not responding in N64 games and Mame2003 with no control ...\n" | tee -a "$LOG_FILE"
 mv -v /home/odroid/.config/retroarch/retroarch-core-options.cfg /home/odroid/.config/retroarch/retroarch-core-options.cfg.update$UPDATE_VER.bak | tee -a "$LOG_FILE"
