@@ -200,6 +200,7 @@ printf "\nAtari800 bios file location and default controller fix...\n" | tee -a 
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/home/odroid/.atari800.cfg -O /home/odroid/.atari800.cfg -a "$LOG_FILE"
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/retroarch/config/remaps/Atari800.zip -a "$LOG_FILE"
 sudo unzip -o Atari800.zip -d /home/odroid/.config/retroarch/config/remaps/ | tee -a "$LOG_FILE"
+sudo rm -v Atari800.zip | tee -a "$LOG_FILE"
 sudo chown -v odroid:odroid -R /home/odroid/.config/retroarch/config/remaps/Atari800/ | tee -a "$LOG_FILE"
 sudo chmod -v 777 /home/odroid/.atari800.cfg | tee -a "$LOG_FILE"
 sudo chown -v odroid:odroid /home/odroid/.atari800.cfg | tee -a "$LOG_FILE"
