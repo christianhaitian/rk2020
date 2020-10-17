@@ -15,7 +15,7 @@ if [ -f "$LOG_FILE" ]; then
   sudo rm "$LOG_FILE"
 fi
 
-if [ ! -f "/home/odroid/.config/update10162020-1" ]; then
+if [ ! -f "/home/odroid/.config/update10172020-1" ]; then
 
 printf "\nInstalling Atari800 fix...\n" | tee -a "$LOG_FILE"
 sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/Atari800sep.tar -a "$LOG_FILE"
