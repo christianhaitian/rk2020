@@ -1,0 +1,1 @@
+		<command>/usr/local/bin/retroarch --config /home/odroid/.config/retroarch/config/Atari800/retroarch_A800.cfg -L /home/odroid/.config/retroarch/cores/atari800_libretro.so %ROM%</command>
