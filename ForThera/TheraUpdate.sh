@@ -26,7 +26,7 @@ sudo chown -v odroid:odroid -R /home/odroid/.config/retroarch/config/Atari800/ |
 sudo chown -v odroid:odroid -R /home/odroid/.config/retroarch/config/remaps/Atari800/ | tee -a "$LOG_FILE"
 sudo chown -v odroid:odroid -R /home/odroid/.atari800.cfg | tee -a "$LOG_FILE"
 sudo chown -v odroid:odroid /etc/emulationstation/es_systems.cfg | tee -a "$LOG_FILE"
-msgbox "Updates have been completed.  Hit A to go back to Emulationstation."
+msgbox "Atari800 workaround for 800, 5200, and XEGS has been applied.  Hit A to go back to Emulationstation."
 touch "$UPDATE_DONE"
 rm -v -- "$0" | tee -a "$LOG_FILE"
 sudo systemctl restart emulationstation
@@ -42,7 +42,7 @@ sudo chmod -v 777 /home/odroid/.config/retroarch/cores/ecwolf_libretro.so | tee 
 sudo chown -v odroid:odroid /home/odroid/.config/retroarch/cores/ecwolf_libretro.so | tee -a "$LOG_FILE"
 sudo rm -v ecwolf_libretro.so.zip | tee -a "$LOG_FILE"
 sudo rm -v ecwolf.zip | tee -a "$LOG_FILE"
-msgbox "Atari800 fix update have been applied and as an added bonus, you can now run the Wolfenstein 3D port. Hit A to go back to Emulationstation."
+msgbox "Wolfenstein 3D port has been added. Hit A to go back to Emulationstation."
 touch "$UPDATE_DONE"
 rm -v -- "$0" | tee -a "$LOG_FILE"
 sudo systemctl restart emulationstation
