@@ -35,6 +35,7 @@ msgbox "Atari800 workaround for 800, 5200, and XEGS has been applied.  Hit A to 
 touch "$UPDATE_DONE"
 rm -v -- "$0" | tee -a "$LOG_FILE"
 sudo systemctl restart emulationstation
+tput clear >> /dev/tty1
 exit 187
 
 elif [ ! -f "$UPDATE_DONE" ]; then
@@ -51,10 +52,12 @@ msgbox "Wolfenstein 3D port has been added. Hit A to go back to Emulationstation
 touch "$UPDATE_DONE"
 rm -v -- "$0" | tee -a "$LOG_FILE"
 sudo systemctl restart emulationstation
+tput clear >> /dev/tty1
 exit 187
 
 else 
 msgbox "No more updates available.  Check back later."
 rm -- "$0"
+tput clear >> /dev/tty1
 exit 187
 fi
