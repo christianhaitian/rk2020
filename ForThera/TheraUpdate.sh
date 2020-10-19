@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-UPDATE_DATE="10172020-2"
+UPDATE_DATE="10192020"
 LOG_FILE="/home/odroid/update$UPDATE_DATE.log"
 UPDATE_DONE="/home/odroid/.config/testupdate$UPDATE_DATE"
 
@@ -38,7 +38,7 @@ sudo systemctl restart emulationstation
 printf "\033c" >> /dev/tty1
 exit 187
 
-elif [ ! -f "$UPDATE_DONE" ]; then
+elif [ ! -f "/home/odroid/.config/testupdate10172020-2" ]; then
 printf "\nLet's get some wolfenstein 3D in here...\n" | tee -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/ecwolf.zip -a "$LOG_FILE"
 wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/ecwolf_libretro.so.zip -a "$LOG_FILE"
@@ -49,10 +49,21 @@ sudo chown -v odroid:odroid /home/odroid/.config/retroarch/cores/ecwolf_libretro
 sudo rm -v ecwolf_libretro.so.zip | tee -a "$LOG_FILE"
 sudo rm -v ecwolf.zip | tee -a "$LOG_FILE"
 msgbox "Wolfenstein 3D port has been added. Hit A to go back to Emulationstation."
-touch "$UPDATE_DONE"
+touch "/home/odroid/.config/testupdate10172020-2"
 rm -v -- "$0" | tee -a "$LOG_FILE"
 sudo systemctl restart emulationstation
 printf "\033c" >> /dev/tty1
+exit 187
+
+elif [ ! -f "$UPDATE_DONE" ]; then
+printf "\nAllow the ability to quit Emulationstation...\n" | tee -a "$LOG_FILE"
+sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/emulationstation-fcamod/emulationstation.service -O /etc/systemd/system/emulationstation.service -a "$LOG_FILE"
+sudo systemctl daemon-reload
+msgbox "You can now quit EmulationStation.  This could be handy if you want to access a terminal via keyboard by quitting EmulationStation from the start menu then doing alt-f2 or alt-f3 on a connected keyboard for testing or development purposes."
+touch "$UPDATE_DONE"
+rm -v -- "$0" | tee -a "$LOG_FILE"
+printf "\033c" >> /dev/tty1
+sudo systemctl restart emulationstation
 exit 187
 
 else 
