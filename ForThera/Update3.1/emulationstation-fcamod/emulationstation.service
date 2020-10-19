@@ -1,0 +1,14 @@
+[Unit]
+Description=ODROID-GO2 EmulationStation
+After=firstboot.service
+
+[Service]
+Type=simple
+User=odroid
+WorkingDirectory=/home/odroid
+ExecStart=/usr/bin/emulationstation/emulationstation.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

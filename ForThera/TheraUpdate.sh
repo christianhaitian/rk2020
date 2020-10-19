@@ -32,7 +32,7 @@ sudo chown -v odroid:odroid -R /home/odroid/.config/retroarch/config/remaps/Atar
 sudo chown -v odroid:odroid -R /home/odroid/.atari800.cfg | tee -a "$LOG_FILE"
 sudo chown -v odroid:odroid /etc/emulationstation/es_systems.cfg | tee -a "$LOG_FILE"
 msgbox "Atari800 workaround for 800, 5200, and XEGS has been applied.  Hit A to go back to Emulationstation."
-touch "$UPDATE_DONE"
+touch "/home/odroid/.config/testupdate10172020-1"
 rm -v -- "$0" | tee -a "$LOG_FILE"
 sudo systemctl restart emulationstation
 printf "\033c" >> /dev/tty1
