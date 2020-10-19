@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-UPDATE_DATE="10192020"
+UPDATE_DATE="10192020-1"
 LOG_FILE="/home/odroid/update$UPDATE_DATE.log"
 UPDATE_DONE="/home/odroid/.config/testupdate$UPDATE_DATE"
 
@@ -51,14 +51,23 @@ if [ ! -f "/home/odroid/.config/testupdate10172020-2" ]; then
 	printf "\033c" >> /dev/tty1
 fi
 
-if [ ! -f "$UPDATE_DONE" ]; then
+if [ ! -f "/home/odroid/.config/testupdate10192020" ]; then
 	printf "\nAllow the ability to quit Emulationstation...\n" | tee -a "$LOG_FILE"
-	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/emulationstation-fcamod/emulationstation.service -O /etc/systemd/system/emulationstation.service -a "$LOG_FILE"
+	sudo wget https://github.com/christianhaitian/rgb10/raw/master/ForThera/emulationstation-fcamod/emulationstation.service -O /etc/systemd/system/emulationstation.service -a "$LOG_FILE"
 	sudo systemctl daemon-reload
-	msgbox "You can now quit EmulationStation.  This could be handy if you want to access a terminal via keyboard by quitting EmulationStation from the start menu then doing alt-f2 or alt-f3 on a connected keyboard for testing or development purposes."
-	touch "$UPDATE_DONE"
-	rm -v -- "$0" | tee -a "$LOG_FILE"
+	msgbox "You can now quit EmulationStation.  This could be handy if you want to access a terminal via keyboard by doing alt-f2 or alt-f3 for testing or debugging purposes."
+	touch "/home/odroid/.config/testupdate10192020"
 	printf "\033c" >> /dev/tty1
 	sudo systemctl restart emulationstation
+fi
+
+if [ ! -f "$UPDATE_DONE" ]; then
+	printf "\nFix flycast 64bit default configuration save issue\n" | tee -a "$LOG_FILE"
+	sudo mv -v /home/odroid/.config/retroarch/config/Flycast/Flycast.cfg /home/odroid/.config/retroarch/config/Flycast/Flycast.cfg.$UPDATE_DATE.bak | tee -a "$LOG_FILE"
+	sudo chown -v odroid:odroid /home/odroid/.config/retroarch/config/Flycast/Flycast.cfg.$UPDATE_DATE.bak | tee -a "$LOG_FILE"
+	rm -v -- "$0" | tee -a "$LOG_FILE"
+	msgbox "An issue with flycast 64bit being able to save to the default configuration file has been fixed."
+	touch "$UPDATE_DONE"
+	printf "\033c" >> /dev/tty1
 	exit 187
 fi
