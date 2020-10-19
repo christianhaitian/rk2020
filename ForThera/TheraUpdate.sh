@@ -58,7 +58,6 @@ if [ ! -f "/home/odroid/.config/testupdate10192020" ]; then
 	msgbox "You can now quit EmulationStation.  This could be handy if you want to access a terminal via keyboard by doing alt-f2 or alt-f3 for testing or debugging purposes."
 	touch "/home/odroid/.config/testupdate10192020"
 	printf "\033c" >> /dev/tty1
-	sudo systemctl restart emulationstation
 fi
 
 if [ ! -f "$UPDATE_DONE" ]; then
