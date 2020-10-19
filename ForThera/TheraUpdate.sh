@@ -15,6 +15,11 @@ if [ -f "$LOG_FILE" ]; then
   sudo rm "$LOG_FILE"
 fi
 
+sudo chmod 666 /dev/tty1
+echo 255 > /sys/devices/platform/backlight/backlight/backlight/brightness
+touch $LOG_FILE
+tail -f $LOG_FILE >> /dev/tty1 &
+
 if [ ! -f "/home/odroid/.config/testupdate10172020-1" ]; then
 
 printf "\nInstalling Atari800 fix...\n" | tee -a "$LOG_FILE"
