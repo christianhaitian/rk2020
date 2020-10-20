@@ -1,0 +1,7 @@
+		<command>sudo perfmax; /usr/local/bin/ppsspp.sh %EMULATOR% %ROM%; sudo perfnorm</command>
+		   <emulators>
+		      <emulator name="standalone">
+		      </emulator>
+		      <emulator name="retroarch">
+		      </emulator>
+		   </emulators>
