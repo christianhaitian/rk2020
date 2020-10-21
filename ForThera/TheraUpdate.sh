@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-UPDATE_DATE="10202020"
+UPDATE_DATE="10202020-1"
 LOG_FILE="/home/odroid/update$UPDATE_DATE.log"
 UPDATE_DONE="/home/odroid/.config/testupdate$UPDATE_DATE"
 
@@ -69,7 +69,7 @@ if [ ! -f "/home/odroid/.config/testupdate10192020-1" ]; then
 	printf "\033c" >> /dev/tty1
 fi
 
-if [ ! -f "$UPDATE_DONE" ]; then
+if [ ! -f "/home/odroid/.config/testupdate10202020" ]; then
 	printf "\nAdd option to use PPSSPP retroarch core\n" | tee -a "$LOG_FILE"
 	sudo wget http://eple.us/retroroller/libretro/aarch64/ppsspp_libretro.so.zip -a "$LOG_FILE"
 	sudo unzip -n ppsspp_libretro.so.zip -d /home/odroid/.config/retroarch/cores/ | tee -a "$LOG_FILE"
@@ -82,6 +82,19 @@ if [ ! -f "$UPDATE_DONE" ]; then
 	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/ppsspp-options/es_systems.cfg -O /etc/emulationstation/es_systems.cfg -a "$LOG_FILE"
 	sudo chown -v odroid:odroid /etc/emulationstation/es_systems.cfg | tee -a "$LOG_FILE"
 	msgbox "You now have the option to select retroarch for playing PSP games.  Restart EmulationStation in order enable this new feature."
+	touch "/home/odroid/.config/testupdate10202020"
+	printf "\033c" >> /dev/tty1
+fi
+
+if [ ! -f "$UPDATE_DONE" ]; then
+	printf "\nAdd option to use Mednafen_PCE retroarch core for increased accuracy\n" | tee -a "$LOG_FILE"
+	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/mednafen_pce/mednafen_pce_libretro.so -O /home/odroid/.config/retroarch/cores/mednafen_pce_libretro.so -a "$LOG_FILE"
+	sudo chmod -v 777 /home/odroid/.config/retroarch/cores/mednafen_pce_libretro.so | tee -a "$LOG_FILE"
+	sudo chown -v odroid:odroid /home/odroid/.config/retroarch/cores/mednafen_pce_libretro.so | tee -a "$LOG_FILE"
+	sudo mv -v /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.update$UPDATE_DATE.bak | tee -a "$LOG_FILE"
+	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/mednafen_pce/es_systems.cfg -O /etc/emulationstation/es_systems.cfg -a "$LOG_FILE"
+	sudo chown -v odroid:odroid /etc/emulationstation/es_systems.cfg | tee -a "$LOG_FILE"
+	msgbox "You now have the option to select Mednafen_PCE retroarch core for PCE/TG-16 games.  Restart EmulationStation in order enable this new feature."
 	touch "$UPDATE_DONE"
 	rm -v -- "$0" | tee -a "$LOG_FILE"
 	printf "\033c" >> /dev/tty1
