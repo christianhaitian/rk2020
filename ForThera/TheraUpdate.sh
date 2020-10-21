@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-UPDATE_DATE="10202020-1"
+UPDATE_DATE="10212020"
 LOG_FILE="/home/odroid/update$UPDATE_DATE.log"
 UPDATE_DONE="/home/odroid/.config/testupdate$UPDATE_DATE"
 
@@ -87,7 +87,7 @@ if [ ! -f "/home/odroid/.config/testupdate10202020" ]; then
 fi
 
 if [ ! -f "$UPDATE_DONE" ]; then
-	printf "\nAdd option to use Mednafen_PCE retroarch core for increased accuracy\n" | tee -a "$LOG_FILE"
+	printf "\nAdd option to use Mednafen_PCE or Mednafen_supergrafx retroarch core for increased accuracy and compatibility\n" | tee -a "$LOG_FILE"
 	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/mednafen_pce/mednafen_pce_libretro.so -O /home/odroid/.config/retroarch/cores/mednafen_pce_libretro.so -a "$LOG_FILE"
 	sudo chmod -v 777 /home/odroid/.config/retroarch/cores/mednafen_pce_libretro.so | tee -a "$LOG_FILE"
 	sudo chown -v odroid:odroid /home/odroid/.config/retroarch/cores/mednafen_pce_libretro.so | tee -a "$LOG_FILE"
