@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-UPDATE_DATE="10222020"
+UPDATE_DATE="10252020"
 LOG_FILE="/home/odroid/update$UPDATE_DATE.log"
 UPDATE_DONE="/home/odroid/.config/testupdate$UPDATE_DATE"
 
@@ -15,6 +15,7 @@ if [ -f "$LOG_FILE" ]; then
 	sudo rm "$LOG_FILE"
 fi
 
+c_brightness="$(cat /sys/devices/platform/backlight/backlight/backlight/brightness)"
 sudo chmod 666 /dev/tty1
 echo 255 > /sys/devices/platform/backlight/backlight/backlight/brightness
 touch $LOG_FILE
@@ -86,7 +87,7 @@ if [ ! -f "/home/odroid/.config/testupdate10202020" ]; then
 	printf "\033c" >> /dev/tty1
 fi
 
-if [ ! -f "$UPDATE_DONE" ]; then
+if [ ! -f "/home/odroid/.config/testupdate10222020" ]; then
 	printf "\nAdd option to use Mednafen_PCE or Mednafen_supergrafx retroarch core for increased accuracy and compatibility\n" | tee -a "$LOG_FILE"
 	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/mednafen_pce/mednafen_pce_libretro.so -O /home/odroid/.config/retroarch/cores/mednafen_pce_libretro.so -a "$LOG_FILE"
 	sudo chmod -v 777 /home/odroid/.config/retroarch/cores/mednafen_pce_libretro.so | tee -a "$LOG_FILE"
@@ -95,8 +96,19 @@ if [ ! -f "$UPDATE_DONE" ]; then
 	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/mednafen_pce/es_systems.cfg -O /etc/emulationstation/es_systems.cfg -a "$LOG_FILE"
 	sudo chown -v odroid:odroid /etc/emulationstation/es_systems.cfg | tee -a "$LOG_FILE"
 	msgbox "You now have the option to select Mednafen_PCE retroarch core for PCE/TG-16 games.  Restart EmulationStation in order enable this new feature."
+	touch "/home/odroid/.config/testupdate10222020"
+	printf "\033c" >> /dev/tty1
+fi
+
+if [ ! -f "$UPDATE_DONE" ]; then
+	printf "\nAdd updated Emulationstation with power icon\n" | tee -a "$LOG_FILE"
+	sudo mv -v /usr/bin/emulationstation/emulationstation /usr/bin/emulationstation/emulationstation.update$UPDATE_DATE.bak | tee -a "$LOG_FILE"
+	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/emulationstation-fcamod/emulationstation -O /usr/bin/emulationstation/emulationstation -a "$LOG_FILE"
+	sudo chmod -v 777 /usr/bin/emulationstation/emulationstation | tee -a "$LOG_FILE"
+	msgbox "Updated Emulationstation with power icon added when plugged to charger.  You'll need to restart Emulationstation in order for this update to take effect."
 	touch "$UPDATE_DONE"
 	rm -v -- "$0" | tee -a "$LOG_FILE"
 	printf "\033c" >> /dev/tty1
+	echo $c_brightness > /sys/devices/platform/backlight/backlight/backlight/brightness
 	exit 187
 fi
