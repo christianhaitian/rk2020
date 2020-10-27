@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-UPDATE_DATE="10252020"
+UPDATE_DATE="10272020"
 LOG_FILE="/home/odroid/update$UPDATE_DATE.log"
 UPDATE_DONE="/home/odroid/.config/testupdate$UPDATE_DATE"
 
@@ -100,12 +100,30 @@ if [ ! -f "/home/odroid/.config/testupdate10222020" ]; then
 	printf "\033c" >> /dev/tty1
 fi
 
-if [ ! -f "$UPDATE_DONE" ]; then
+if [ ! -f "/home/odroid/.config/testupdate10252020" ]; then
 	printf "\nAdd updated Emulationstation with power icon\n" | tee -a "$LOG_FILE"
 	sudo mv -v /usr/bin/emulationstation/emulationstation /usr/bin/emulationstation/emulationstation.update$UPDATE_DATE.bak | tee -a "$LOG_FILE"
 	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/emulationstation-fcamod/emulationstation -O /usr/bin/emulationstation/emulationstation -a "$LOG_FILE"
 	sudo chmod -v 777 /usr/bin/emulationstation/emulationstation | tee -a "$LOG_FILE"
 	msgbox "Updated Emulationstation with power icon added when plugged to charger.  You'll need to restart Emulationstation in order for this update to take effect."
+	touch "/home/odroid/.config/testupdate10252020"
+	printf "\033c" >> /dev/tty1
+fi
+
+if [ ! -f "$UPDATE_DONE" ]; then
+	printf "\nAdd support for standalone N64 emulator\n" | tee -a "$LOG_FILE"
+	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/mupen64plus-standalone/InputAutoCfg.ini -O /opt/mupen64plus/InputAutoCfg.ini -a "$LOG_FILE"
+	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/mupen64plus-standalone/es_systems.cfg -O /etc/emulationstation/es_systems.cfg -a "$LOG_FILE"
+	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/mupen64plus-standalone/mupen64plus-input-sdl.so -O /opt/mupen64plus/mupen64plus-input-sdl.so -a "$LOG_FILE"
+	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/mupen64plus-standalone/mupen64plus.cfg -O /home/odroid/.config/mupen64plus/mupen64plus.cfg -a "$LOG_FILE"
+	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/mupen64plus-standalone/n64.sh -O /usr/local/bin/n64.sh -a "$LOG_FILE"
+	sudo chown -v odroid:odroid /opt/mupen64plus/InputAutoCfg.ini | tee -a "$LOG_FILE"
+	sudo chown -v odroid:odroid /etc/emulationstation/es_systems.cfg | tee -a "$LOG_FILE"
+	sudo chown -v odroid:odroid /opt/mupen64plus/mupen64plus-input-sdl.so | tee -a "$LOG_FILE"
+	sudo chown -v odroid:odroid /home/odroid/.config/mupen64plus/mupen64plus.cfg | tee -a "$LOG_FILE"
+	sudo chmod -v 777 /usr/local/bin/n64.sh | tee -a "$LOG_FILE"
+	sudo chmod -v 755 /opt/mupen64plus/mupen64plus-input-sdl.so | tee -a "$LOG_FILE"
+	msgbox "Added support for standalone N64 emulator.  You'll need to restart Emulationstation in order for this update to take effect."
 	touch "$UPDATE_DONE"
 	rm -v -- "$0" | tee -a "$LOG_FILE"
 	printf "\033c" >> /dev/tty1
