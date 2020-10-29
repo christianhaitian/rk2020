@@ -141,8 +141,8 @@ if [ ! -f "$UPDATE_DONE" ]; then
 	sudo mkdir -v /roms/odyssey2 | tee -a "$LOG_FILE"
 	sudo sed -i '/wonderswancolor<\/theme>/r addo2em.txt' /etc/emulationstation/es_systems.cfg
 	sudo sed -i '/Joy Mapping Pause/c\Joy Mapping Pause \= \"J0B10\/B1\"' /home/odroid/.config/mupen64plus/mupen64plus.cfg
-	sudo chown -v odroid:odroid /etc/emulationstation/es_systems.cfg
-	sudo chown -v odroid:odroid /home/odroid/.config/mupen64plus/mupen64plus.cfg
+	sudo chown -v odroid:odroid /etc/emulationstation/es_systems.cfg | tee -a "$LOG_FILE"
+	sudo chown -v odroid:odroid /home/odroid/.config/mupen64plus/mupen64plus.cfg | tee -a "$LOG_FILE"
 	sudo rm -v o2em_libretro.so.zip | tee -a "$LOG_FILE" | tee -a "$LOG_FILE"
 	sudo rm -v addo2em.txt | tee -a "$LOG_FILE" | tee -a "$LOG_FILE"
 	msgbox "Added support for pausing in standalone mupen64plus emulator using Select and A button combination."
