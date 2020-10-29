@@ -145,7 +145,7 @@ if [ ! -f "$UPDATE_DONE" ]; then
 	sudo chown -v odroid:odroid /home/odroid/.config/mupen64plus/mupen64plus.cfg | tee -a "$LOG_FILE"
 	sudo rm -v o2em_libretro.so.zip | tee -a "$LOG_FILE" | tee -a "$LOG_FILE"
 	sudo rm -v addo2em.txt | tee -a "$LOG_FILE" | tee -a "$LOG_FILE"
-	msgbox "Added support for pausing in standalone mupen64plus emulator using Select and A button combination."
+	msgbox "Added support for pausing in standalone mupen64plus emulator using Select and A button combination and add Odyssey2 emulator support."
 	touch "$UPDATE_DONE"
 	rm -v -- "$0" | tee -a "$LOG_FILE"
 	printf "\033c" >> /dev/tty1
