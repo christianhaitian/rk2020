@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-UPDATE_DATE="10272020"
+UPDATE_DATE="10292020"
 LOG_FILE="/home/odroid/update$UPDATE_DATE.log"
 UPDATE_DONE="/home/odroid/.config/testupdate$UPDATE_DATE"
 
@@ -110,7 +110,7 @@ if [ ! -f "/home/odroid/.config/testupdate10252020" ]; then
 	printf "\033c" >> /dev/tty1
 fi
 
-if [ ! -f "$UPDATE_DONE" ]; then
+if [ ! -f "/home/odroid/.config/testupdate10252020" ]; then
 	printf "\nAdd support for standalone N64 emulator\n" | tee -a "$LOG_FILE"
 	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/mupen64plus-standalone/InputAutoCfg.ini -O /opt/mupen64plus/InputAutoCfg.ini -a "$LOG_FILE"
 	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/mupen64plus-standalone/es_systems.cfg -O /etc/emulationstation/es_systems.cfg -a "$LOG_FILE"
@@ -126,6 +126,26 @@ if [ ! -f "$UPDATE_DONE" ]; then
 	sudo chmod -v 777 /usr/local/bin/n64.sh | tee -a "$LOG_FILE"
 	sudo chmod -v 755 /opt/mupen64plus/mupen64plus-input-sdl.so | tee -a "$LOG_FILE"
 	msgbox "Added support for standalone N64 emulator.  You'll need to restart Emulationstation in order for this update to take effect."
+	touch "/home/odroid/.config/testupdate10252020"
+	printf "\033c" >> /dev/tty1
+fi
+
+if [ ! -f "$UPDATE_DONE" ]; then
+	printf "\nAdd support for pausing in standalone mupen64plus emulator and add Odyssey2 emulator support.  \n" | tee -a "$LOG_FILE"
+	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/mupen64plus-standalone/libmupen64plus.so.2.0.0 -O /opt/mupen64plus/libmupen64plus.so.2.0.0 -a "$LOG_FILE"
+	sudo wget http://eple.us/retroroller/libretro/aarch64/o2em_libretro.so.zip -a "$LOG_FILE"
+	sudo wget https://github.com/christianhaitian/rk2020/raw/master/ForThera/Update3.1/o2em/addo2em.txt -a "$LOG_FILE"
+	sudo unzip -n o2em_libretro.so.zip -d /home/odroid/.config/retroarch/cores/ | tee -a "$LOG_FILE"
+	sudo chown -v odroid:odroid /opt/mupen64plus/libmupen64plus.so.2.0.0 | tee -a "$LOG_FILE"	
+	sudo chown -v odroid:odroid /home/odroid/.config/retroarch/cores/o2em_libretro.so | tee -a "$LOG_FILE"
+	sudo mkdir -v /roms/odyssey2 | tee -a "$LOG_FILE"
+	sudo sed -i '/wonderswancolor<\/theme>/r addo2em.txt' /etc/emulationstation/es_systems.cfg
+	sudo sed -i '/Joy Mapping Pause/c\Joy Mapping Pause \= \"J0B10\/B1\"' /home/odroid/.config/mupen64plus/mupen64plus.cfg
+	sudo chown -v odroid:odroid /etc/emulationstation/es_systems.cfg
+	sudo chown -v odroid:odroid /home/odroid/.config/mupen64plus/mupen64plus.cfg
+	sudo rm -v o2em_libretro.so.zip | tee -a "$LOG_FILE" | tee -a "$LOG_FILE"
+	sudo rm -v addo2em.txt | tee -a "$LOG_FILE" | tee -a "$LOG_FILE"
+	msgbox "Added support for pausing in standalone mupen64plus emulator using Select and A button combination."
 	touch "$UPDATE_DONE"
 	rm -v -- "$0" | tee -a "$LOG_FILE"
 	printf "\033c" >> /dev/tty1

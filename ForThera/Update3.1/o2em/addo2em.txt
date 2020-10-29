@@ -1,0 +1,9 @@
+	</system>
+	<system>
+		<name>odyssey2</name>
+		<fullname>Magnavox - Odyssey2</fullname>
+		<path>/roms/odyssey2/</path>
+		<extension>.bin .BIN</extension>
+		<command>/usr/local/bin/retroarch -L /home/odroid/.config/retroarch/cores/o2em_libretro.so %ROM%</command>
+		<platform>odyssey2</platform>
+		<theme>odyssey2</theme>
