@@ -6,8 +6,11 @@ sudo ln -s /dev/mmcblk0p3 /dev/hda3
 sudo fdisk -l --bytes /dev/hda >> /boot/test.txt
 sudo awk '{print $5}' /boot/test.txt >> /boot/test2.txt
 maxsize=$(tail -n 1 /boot/test2.txt)
+sudo ntfsfix -d /dev/hda3
 sudo ntfsresize -f -s $maxsize /dev/hda3
 sudo ntfsfix -d /dev/hda3
+echo -ne '\xeb\x58\x90' | sudo dd conv=notrunc bs=1 count=3 of=/dev/hda3
+sync
 sudo rm -f /boot/test*
 sudo rm -f /boot/doneit
 exitcode=$?
